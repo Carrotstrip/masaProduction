@@ -1,0 +1,5 @@
+# Stop on errors
+set -e
+set -x
+
+python -m unittest discover --start-directory tests --verbose
