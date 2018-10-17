@@ -9,4 +9,8 @@ env/
 var/
 node_modules/
 bundle.js
+<<<<<<< HEAD
 cookies.txt
+=======
+cookies.txt
+>>>>>>> af187dd14d5c239c7043cbe32f6bb2e5c53cd034
