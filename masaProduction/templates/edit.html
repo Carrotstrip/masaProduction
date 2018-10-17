@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>insta485</title>
+</head>
+<body>
+<ul>
+  <li><a href={{url_for('show_index')}}> <h1> | Insta485 </h1></a></li>
+  <li style="float:right">
+    <h2> 
+      <a href={{url_for('show_explore')}}>explore</a>
+      <a href={{url_for('show_user', username = logname)}}> {{logname}} </a>
+    </h2>
+  </li>
+</ul>
+<hr>
+
+<img src="{{url_for('view_image', filename = file)}}" alt="User Profile" height="25">
+<a>{{logname}}</a>
+
+<form action="" method="post" enctype="multipart/form-data">
+  <input type="file" name="file">
+  <input type="text" name="fullname" value="{{fullname}}"/>
+  <input type="text" name="email" value="{{email}}"/>
+  <input type="submit" name="update" value="submit"/>
+</form>
+
+<a href={{url_for('show_password')}}>change password</a>
+<a href={{url_for('show_delete')}}>delete account</a>

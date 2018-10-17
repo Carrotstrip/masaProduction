@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>MASA Production</title>
+    <meta name="description" content="MASA's production logistics site">
+    <meta name="author" content="Austin Wolfgram, Jacob Fedrigon">
+    <!--<link rel="stylesheet" type="text/css" href="../../static/css/style.css"> -->
+    <style>
+      /* style.css */
+      main {
+        color: #7c4ec5ef;
+        margin: 10px;
+      }
+      html {
+        background-color: #d6cb29b7;
+      }
+
+      #navbar {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: rgb(91, 93, 99);
+      }
+
+      navli {
+          float: left;
+      }
+
+      navli a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+      }
+
+      /* Change the link color to #111 (black) on hover */
+      navli a:hover {
+      background-color: rgb(182, 10, 10);
+      }
+
+      li {
+        list-style-type: none;
+      }
+
+      topright {
+        position: absolute;
+        top: 8px;
+        right: 16px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <topright>by Austin Wolfgram and Jacob Fedrigon</topright>
+        <h1 class="logo">masaProduction</h1>
+        <strong>
+          <div id="navbar" class="menu">
+            <navli><a href="{{ url_for('showAbout') }}">about</a></navli>
+            <navli><a href="{{ url_for('showIndex') }}">home</a></navli>
+            <navli><a href="{{ url_for('showParts') }}">parts</a></navli>
+            <navli><a href="{{ url_for('showMembers') }}">members</a></navli>
+            <navli><a href="{{ url_for('showReaders') }}">readers</a></navli>
+
+            <navli><a href="{{ url_for('showLogout') }}">logout</a></navli>
+            <navli><a href="{{ url_for('showEdit') }}">edit</a></navli>
+            <navli><a href="{{ url_for('showCreate') }}">create</a></navli>
+            <navli><a href="{{ url_for('showLogin') }}">login</a></navli>
+          </div>
+        </strong>
+      </div>
+    </header>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+      </div>
+  </body>
+</html>
