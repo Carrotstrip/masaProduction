@@ -7,6 +7,7 @@ CREATE TABLE machinists(
   cncMillStatus VARCHAR(40) NOT NULL,
   cncLatheStatus VARCHAR(40) NOT NULL,
   haasStatus VARCHAR(40) NOT NULL,
+	available VARCHAR(40) NOT NULL,
 	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY(uniqname)
 );

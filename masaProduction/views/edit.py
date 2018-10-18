@@ -13,12 +13,12 @@ from masaProduction.util import hashFile
 @masaProduction.app.route('/accounts/edit/', methods=['GET', 'POST'])
 def showEdit():
     """Display /accounts/edit/ route."""
-    if 'username' not in flask.session:
+    if 'logname' not in flask.session:
         return flask.redirect(flask.url_for('showLogin'))
     data = {}
     d_b = masaProduction.model.getDb()
     cursor = d_b.cursor()
-    data['logname'] = flask.session['username']
+    data['logname'] = flask.session['logname']
     if flask.request.method == 'POST':
         data['fullname'] = flask.request.form['fullname']
         data['email'] = flask.request.form['email']
@@ -39,7 +39,7 @@ def showEdit():
              email = :email WHERE username = :logname", data)
 
     context = {}
-    context['logname'] = flask.session['username']
+    context['logname'] = flask.session['logname']
     context['file'] = cursor.execute("SELECT filename FROM users\
         WHERE username = :logname", data).fetchone()['filename']
 

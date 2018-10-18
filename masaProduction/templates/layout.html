@@ -51,6 +51,23 @@
         right: 16px;
       }
 
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        padding: 10px;
+        margin: 10px;
+      }
+
+      td, th {
+        border: 1px solid #000000;
+        text-align: left;
+        padding: 8px;
+      }
+
+      input {
+        margin-top: 10px;
+      }
+
     </style>
   </head>
 
@@ -61,16 +78,15 @@
         <h1 class="logo">masaProduction</h1>
         <strong>
           <div id="navbar" class="menu">
-            <navli><a href="{{ url_for('showAbout') }}">about</a></navli>
             <navli><a href="{{ url_for('showIndex') }}">home</a></navli>
             <navli><a href="{{ url_for('showParts') }}">parts</a></navli>
             <navli><a href="{{ url_for('showMembers') }}">members</a></navli>
             <navli><a href="{{ url_for('showReaders') }}">readers</a></navli>
-
             <navli><a href="{{ url_for('showLogout') }}">logout</a></navli>
             <navli><a href="{{ url_for('showEdit') }}">edit</a></navli>
             <navli><a href="{{ url_for('showCreate') }}">create</a></navli>
             <navli><a href="{{ url_for('showLogin') }}">login</a></navli>
+            <navli><a href="{{ url_for('showAbout') }}">about</a></navli>
           </div>
         </strong>
       </div>

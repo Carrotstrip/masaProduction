@@ -54,6 +54,7 @@ def sha256sum(filename):
 
 def hashFile(request):
     """."""
+    if
     # Save POST request's file object to a temp file
     dummy, temp_filename = tempfile.mkstemp()
     file = request["file"]

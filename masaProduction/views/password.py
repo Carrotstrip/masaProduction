@@ -11,12 +11,12 @@ from masaProduction.util import hashPassword, matchesDbPassword, getCursor
 @masaProduction.app.route('/accounts/password/', methods=('GET', 'POST'))
 def showPassword():
     """Display /accounts/password/ route."""
-    if 'username' not in flask.session:
+    if 'logname' not in flask.session:
         return flask.redirect(flask.url_for('showLogin'))
     cursor = getCursor()
     data = {}
     if flask.request.method == 'POST':
-        username = flask.session['username']
+        username = flask.session['logname']
         data['username'] = username
         old_db_password = cursor.execute("SELECT password FROM\
                                          users WHERE username =\

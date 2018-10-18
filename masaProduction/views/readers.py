@@ -11,7 +11,7 @@ import masaProduction
 @masaProduction.app.route('/readers/')
 def showReaders():
     """Display /readers/ route."""
-    if 'username' not in flask.session:
+    if 'logname' not in flask.session:
         return flask.redirect(flask.url_for('showLogin'))
     context = {}
     return flask.render_template("readers.html", **context)

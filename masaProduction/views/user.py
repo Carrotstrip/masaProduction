@@ -12,7 +12,7 @@ from masaProduction.util import hashFile, getCursor
 @masaProduction.app.route('/u/<username>/', methods=('GET', 'POST'))
 def showUser(username):
     """Display /u/<username>/ route."""
-    if 'username' not in flask.session:
+    if 'logname' not in flask.session:
         return flask.redirect(flask.url_for('showLogin'))
     cursor = getCursor()
     if flask.request.method == 'POST':
@@ -31,11 +31,11 @@ def showUser(username):
             hash_filename_basename = hashFile(flask.request.files)
             cursor.execute("INSERT INTO posts (filename, owner)\
                            VALUES (?, ?)", [hash_filename_basename,
-                                            flask.session['username']])
+                                            flask.session['logname']])
         # return flask.redirect(flask.url_for('show_user',
         # username = username))
     context = {}
-    context['logname'] = flask.session['username']
+    context['logname'] = flask.session['logname']
     context['username'] = username
     context['fullname'] = cursor.execute("SELECT fullname\
                                          FROM users WHERE username\
@@ -66,10 +66,10 @@ def showUser(username):
     context['following'] = len(following)
     context['followers'] = len(followers)
     context['total_posts'] = len(context['posts'])
-    if flask.session['username'] in followers:
+    if flask.session['logname'] in followers:
         context['logname_follows_username'] = True
-    elif flask.session['username'] not in followers:
+    elif flask.session['logname'] not in followers:
         context['logname_follows_username'] = False
-    elif flask.session['username'] == username:
+    elif flask.session['logname'] == username:
         context['logname_follows_username'] = False
     return flask.render_template("user.html", **context)
