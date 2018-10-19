@@ -17,29 +17,14 @@ def showUser(username):
     cursor = getCursor()
     if flask.request.method == 'POST':
         data = {}
-        data['logname'] = flask.session['username']
-        data['username'] = username
-        if 'follow' in flask.request.form:
-            cursor.execute("INSERT INTO following (username1,\
-                           username2) VALUES (:logname, :username)", data)
-        elif 'unfollow' in flask.request.form:
-            cursor.execute("DELETE FROM following WHERE\
-                           username1 = :logname AND username2\
-                            = :username", data)
-        elif 'create_post' in flask.request.form:
-
-            hash_filename_basename = hashFile(flask.request.files)
-            cursor.execute("INSERT INTO posts (filename, owner)\
-                           VALUES (?, ?)", [hash_filename_basename,
-                                            flask.session['logname']])
-        # return flask.redirect(flask.url_for('show_user',
-        # username = username))
+        data['logname'] = flask.session['logname']
+        data['uniqname'] = username
     context = {}
     context['logname'] = flask.session['logname']
     context['username'] = username
     context['fullname'] = cursor.execute("SELECT fullname\
-                                         FROM users WHERE username\
-                                         = :username",
+                                         FROM machinists WHERE uniqname\
+                                         = :uniqname",
                                          context).fetchone()["fullname"]
     context['posts'] = cursor.execute("SELECT * FROM posts\
                                       WHERE owner = :username\

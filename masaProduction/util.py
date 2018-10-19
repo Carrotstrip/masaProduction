@@ -6,7 +6,19 @@ import shutil
 import uuid
 import hashlib
 import tempfile
+import flask
 import masaProduction
+
+# this is a list of all the admins, these people have special powers
+# kept behind the isAdmin util function
+admins = ["wolfaust", "rishiji"]
+
+
+@masaProduction.app.route('/uploads/<path:filename>')
+def viewImage(filename):
+    """d."""
+    return flask.send_from_directory(masaProduction.app.config['UPLOAD_FOLDER'],
+                               filename, as_attachment=True)
 
 
 def hashPassword(password):
@@ -32,7 +44,6 @@ def getSalt(hashed_password):
 # takes the raw input password and the hashed db password
 # and returns whether the credentials are correct
 
-
 def matchesDbPassword(input_pass, db_hashed):
     """."""
     algorithm = 'sha512'
@@ -44,6 +55,9 @@ def matchesDbPassword(input_pass, db_hashed):
     password_db_string = "$".join([algorithm, salt, password_hash])
     return password_db_string == db_hashed
 
+def isAdmin(logname) :
+    return logname in admins
+
 
 def sha256sum(filename):
     """Return sha256 hash of file content, similar to UNIX sha256sum."""
@@ -54,12 +68,14 @@ def sha256sum(filename):
 
 def hashFile(request):
     """."""
-    if
     # Save POST request's file object to a temp file
     dummy, temp_filename = tempfile.mkstemp()
-    file = request["file"]
+    if request.files:
+        file = request.files["file"]
+    else:
+        file = "lavar-ball-feature-071818.jpg"
     file.save(temp_filename)
-
+    print(type(file))
     # Compute filename
     hash_txt = sha256sum(temp_filename)
     dummy, suffix = os.path.splitext(file.filename)

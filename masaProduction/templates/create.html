@@ -1,15 +1,22 @@
 {% extends "layout.html" %}
 {% block content %}
-  <div class="create">
-    <body>
-        <form action="" method="post" enctype="multipart/form-data">
-          <input type="file" name="file">
-          <input type="text" name="fullname" placeholder="fullName" />
-          <input type="text" name="uniqname" placeholder="uniqname" />
-          <input type="password" name="password" placeholder="password" />
-          <input type="submit" name="signup" value="sign up"/>
-        </form>
-      </body>
+  <div class="main">
+      <form action="" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="text" name="fullname" placeholder="fullName" />
+        <input type="text" name="uniqname" placeholder="uniqname" />
+        <input type="password" name="password" placeholder="password" />
+        <input type="submit" name="signup" value="sign up"/>
+      </form>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
   </div>
 {% endblock %}
 

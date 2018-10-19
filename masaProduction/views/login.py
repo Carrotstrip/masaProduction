@@ -22,12 +22,14 @@ def showLogin():
         data['uniqname'] = uniqname
         dbUsername = cursor.execute("SELECT uniqname FROM machinists WHERE uniqname = :uniqname", data).fetchone()
         if not dbUsername:
-            flask.abort(400)
+            flask.flash("no account with that uniqname, try again")
+            return flask.redirect(flask.url_for('showLogin'))
         dbPassword = cursor.execute("SELECT password FROM machinists WHERE uniqname = :uniqname", data).fetchone()['password']
         inputPassword = flask.request.form['password']
-        print(dbPassword, inputPassword)
-        #if not matchesDbPassword(inputPassword, dbPassword):
-        #    flask.abort(403)
+        # TODO add the comment on the next line back if we ever do password hashing
+        if not inputPassword == dbPassword: # matchesDbPassword(inputPassword, dbPassword):
+            flask.flash("wrong password, try again")
+            return flask.redirect(flask.url_for('showLogin'))
         flask.session['logname'] = uniqname
         # Upon successful certification, redirect to /.
         return flask.redirect(flask.url_for('showIndex'))
