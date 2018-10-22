@@ -1,6 +1,77 @@
 {% extends "layout.html" %}
 {% block content %}
   <div class="members">
-    members
+    <script>
+      function filterName() {
+        // Declare variables 
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("filterInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("memberTable");
+        tr = table.getElementsByTagName("tr");
+      
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          } 
+        }
+      }
+
+      function filterAvailability() {
+        checked = document.getElementById("filterAvailabilityCheck").checked;
+        table = document.getElementById("memberTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[7];
+          if (td) {
+            if (td.innerText === "yes") {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+            if(!checked) {
+              console.log(td.innerText)
+              tr[i].style.display = "";
+              console.log(tr[i].style.display)
+            }
+          }
+        }
+      }
+    </script>
+
+<input type="text" id="filterInput" onkeyup="filterName()" placeholder="Search for names...">
+<input type="checkbox" id="filterAvailabilityCheck" onclick="filterAvailability()" value="Filter by Availability">
+filter by availability</input>
+
+    <table id="memberTable">
+      <tr>
+        <th>name</th>
+        <th>email</th>
+        <th>mill status</th>
+        <th>lathe status</th>
+        <th>cnc mill status</th>
+        <th>cnc lathe status</th>
+        <th>haas status</th>
+        <th>available</th>
+      </tr>
+      {% for member in members %}
+        <tr>
+          <td><a href={{url_for('showUser', username = member.uniqname)}}>{{member.fullname}}</td>
+          <td><a href="{{member.uniqname}}@umich.edu">{{member.uniqname}}@umich.edu</a></td>
+          <td>{{member.millStatus}}</td>
+          <td>{{member.latheStatus}}</td>
+          <td>{{member.cncMillStatus}}</td>
+          <td>{{member.cncLatheStatus}}</td>
+          <td>{{member.haasStatus}}</td>
+          <td>{{member.available}}</td>
+        </tr> 
+      {% endfor %}
+    </table>
   </div>
 {% endblock %}

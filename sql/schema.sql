@@ -2,34 +2,22 @@ CREATE TABLE machinists(
 	uniqname VARCHAR(20) NOT NULL,
   password VARCHAR(256) NOT NULL,
 	fullname VARCHAR(40) NOT NULL,
-	millStatus VARCHAR(40) NOT NULL,
-  latheStatus VARCHAR(40) NOT NULL,
-  cncMillStatus VARCHAR(40) NOT NULL,
-  cncLatheStatus VARCHAR(40) NOT NULL,
-  haasStatus VARCHAR(40) NOT NULL,
+	filename VARCHAR(256),
+	millStatus VARCHAR(40),
+  latheStatus VARCHAR(40),
+  cncMillStatus VARCHAR(40),
+  cncLatheStatus VARCHAR(40),
+  haasStatus VARCHAR(40),
+	available VARCHAR(40),
 	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY(uniqname)
-);
-
-CREATE TABLE queue(
-	uniqname VARCHAR(20) NOT NULL,
-  password VARCHAR(256) NOT NULL,
-	fullname VARCHAR(40) NOT NULL,
-	millStatus VARCHAR(40) NOT NULL,
-  latheStatus VARCHAR(40) NOT NULL,
-  cncMillStatus VARCHAR(40) NOT NULL,
-  cncLatheStatus VARCHAR(40) NOT NULL,
-  haasStatus VARCHAR(40) NOT NULL,
-	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY(uniqname),
-  FOREIGN KEY(uniqname) REFERENCES machinists(uniqname)
 );
 
 CREATE TABLE parts(
 	name VARCHAR(20) NOT NULL,
 	number VARCHAR(40) NOT NULL,
-	leadDesigner VARCHAR(40) NOT NULL,
-	leadMachinist VARCHAR(64) NOT NULL,
+	designer VARCHAR(40) NOT NULL,
+  machinist VARCHAR(64) NOT NULL,
   designCheck VARCHAR(40) NOT NULL,
   productionCheck VARCHAR(40) NOT NULL,
 	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -37,13 +25,13 @@ CREATE TABLE parts(
 );
 
 CREATE TABLE ops(
-	name VARCHAR(20) NOT NULL,
-	number VARCHAR(40) NOT NULL,
-	leadDesigner VARCHAR(40) NOT NULL,
-	leadMachinist VARCHAR(64) NOT NULL,
-  designCheck VARCHAR(40) NOT NULL,
-  productionCheck VARCHAR(40) NOT NULL,
+	name VARCHAR(128) NOT NULL,
+	number VARCHAR(20) NOT NULL,
+	designer VARCHAR(40) NOT NULL,
+	machinist VARCHAR(64) NOT NULL,
 	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY(number),
   FOREIGN KEY(number) REFERENCES parts(number)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
 );

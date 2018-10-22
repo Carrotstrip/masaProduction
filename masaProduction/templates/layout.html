@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -6,22 +6,25 @@
     <meta name="description" content="MASA's production logistics site">
     <meta name="author" content="Austin Wolfgram, Jacob Fedrigon">
     <!--<link rel="stylesheet" type="text/css" href="../../static/css/style.css"> -->
+
     <style>
       /* style.css */
-      main {
+      .main {
         color: #4b08b6ef;
-        margin: 10px;
-      }
-      html {
-        background-color: #d4c927b7;
+        margin-top: 10px;
       }
 
-      #navbar {
+      html {
+        background-color: #d4c927b7;
+        margin: 10px;
+      }
+
+      
+      .navbar {
           list-style-type: none;
-          margin: 0;
-          padding: 0;
           overflow: hidden;
           background-color: #606264;
+          position: relative;
       }
 
       navli {
@@ -51,6 +54,39 @@
         right: 16px;
       }
 
+      trdiv {
+        text-decoration: none;
+        position: absolute;
+        right: 0px;
+        padding: 14px 16px;
+        color: white;
+      }
+
+      table {
+        font-family: sans-serif;
+        border-collapse: collapse;
+        padding: 10px;
+        margin: 10px;
+      }
+
+      td, th {
+        border: 1px solid #000000;
+        text-align: left;
+        padding: 8px;
+      }
+
+      input {
+        margin-top: 10px;
+      }
+
+      .menu {
+        position: relative;
+      }
+
+      .flashes {
+        color: rgb(255, 0, 0)
+      }
+
     </style>
   </head>
 
@@ -60,21 +96,27 @@
         <topright>by Austin Wolfgram and Jacob Fedrigon</topright>
         <h1 class="logo">masaProduction</h1>
         <strong>
-          <div id="navbar" class="menu">
-            <navli><a href="{{ url_for('showAbout') }}">about</a></navli>
-            <navli><a href="{{ url_for('showIndex') }}">home</a></navli>
-            <navli><a href="{{ url_for('showParts') }}">parts</a></navli>
-            <navli><a href="{{ url_for('showMembers') }}">members</a></navli>
-            <navli><a href="{{ url_for('showReaders') }}">readers</a></navli>
-
-            <navli><a href="{{ url_for('showLogout') }}">logout</a></navli>
-            <navli><a href="{{ url_for('showEdit') }}">edit</a></navli>
-            <navli><a href="{{ url_for('showCreate') }}">create</a></navli>
-            <navli><a href="{{ url_for('showLogin') }}">login</a></navli>
-          </div>
+            <div class="navbar" class="menu">
+              <navli><a href="{{ url_for('showIndex') }}">home</a></navli>
+              <navli><a href="{{ url_for('showParts') }}">parts</a></navli>
+              <navli><a href="{{ url_for('showMembers') }}">members</a></navli>
+              <navli><a href="{{ url_for('showReaders') }}">readers</a></navli>
+              <navli><a href="{{ url_for('showLogout') }}">logout</a></navli>
+              <navli><a href="{{ url_for('showEdit') }}">edit</a></navli>
+              <navli><a href="{{ url_for('showAbout') }}">about</a></navli>
+              {% if session.logname %}
+                <trdiv>logged in as {{session.logname}}</trdiv>
+              {% else %}
+                <trdiv>
+                  <navli><a href="{{ url_for('showCreate') }}">create an account</a></navli>
+                  <navli><a href="{{ url_for('showLogin') }}">login</a></navli>
+                </trdiv>
+              {% endif %}
+            </div>
         </strong>
       </div>
     </header>
+
     <div class="container">
         {% block content %}
         {% endblock %}

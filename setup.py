@@ -11,5 +11,6 @@ setup(
         'Flask==0.12.3',
         'arrow==0.10.0',
         'sh==1.12.14',
+        'flask-bootstrap4'
     ],
 )
