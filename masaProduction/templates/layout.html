@@ -10,12 +10,12 @@
     <style>
       /* style.css */
       .main {
-        color: #4b08b6ef;
+        color: #000000ef;
         margin-top: 10px;
       }
 
       html {
-        background-color: #d4c927b7;
+        background-color: #f8d562;
         margin: 10px;
       }
 
@@ -52,14 +52,6 @@
         position: absolute;
         top: 8px;
         right: 16px;
-      }
-
-      trdiv {
-        text-decoration: none;
-        position: absolute;
-        right: 0px;
-        padding: 14px 16px;
-        color: white;
       }
 
       table {
@@ -105,12 +97,18 @@
               <navli><a href="{{ url_for('showEdit') }}">edit</a></navli>
               <navli><a href="{{ url_for('showAbout') }}">about</a></navli>
               {% if session.logname %}
-                <trdiv>logged in as {{session.logname}}</trdiv>
+                <navli style="float: right; display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;">logged in as {{session.logname}}</navli>
               {% else %}
-                <trdiv>
-                  <navli><a href="{{ url_for('showCreate') }}">create an account</a></navli>
-                  <navli><a href="{{ url_for('showLogin') }}">login</a></navli>
-                </trdiv>
+                <navli style="float: right">
+                  <a href="{{ url_for('showCreate') }}">create an account</a>
+                </navli>
+                <navli style="float: right">
+                  <a href="{{ url_for('showLogin') }}">login</a>
+                </navli>
               {% endif %}
             </div>
         </strong>

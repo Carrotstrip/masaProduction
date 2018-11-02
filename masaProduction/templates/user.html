@@ -1,76 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>insta485</title>
-</head>
-<body>
-<ul>
-  <li><a href={{url_for('showIndex')}}> <h1> | Insta485 </h1></a></li>
-  <li style="float:right">
-    <h2> 
-      <a href={{url_for('showexplore')}}>explore</a>
-      <a href={{url_for('showUser', username = logname)}}> {{logname}} </a>
-      {% if logname == username %}
-        <a href={{url_for('showLogout')}}> logout </a>
-        <a href={{url_for('showEdit')}}> Edit profile </a>
-      {% endif %}
-    </h2>
-  </li>
-</ul>
-<hr>
-
-
-<h1>{{ username }}</h1>
-{% if logname_follows_username == true %}
-    <p>following</p>
-{% elif logname == username %}
-
-{% else %}
-    <p>not following</p>
-{% endif %}
-<p>
-{% if total_posts == 1 %} 
-  <p> 1 post </p>
-{% else %}
-  <p>{{ total_posts }} posts</p>
-{% endif %}
-
-{% if followers == 1 %}
-  <p> <b> <a href={{url_for('show_followers', username = username)}}> 1 follower </a></b></p>
-{% else %}
-  <p> <b> <a href={{url_for('show_followers', username = username)}}> {{ followers }} followers </a></b></p>
-{% endif %}
-
-<p><b><a href={{url_for('show_following', username = username)}}> {{ following }} following </a></b></p>
-
-<p>{{ fullname }}</p>
-
-{% if not logname_follows_username and logname != username %}
-<form action="" method="post" enctype="multipart/form-data">
-  <input type="submit" name="follow" value="follow"/>
-  <input type="hidden" name="username" value={{username}}/>
-</form>
-{% endif %}
-
-{% if logname_follows_username and logname != username %}
-<form action="" method="post" enctype="multipart/form-data">
-  <input type="submit" name="unfollow" value="unfollow"/>
-  <input type="hidden" name="username" value={{username}}/>
-</form>
-{% endif %}
-
-{% if logname == username %}
-<form action="" method="post" enctype="multipart/form-data">
-  <input type="file" name="file">
-  <input type="submit" name="create_post" value="upload new post"/>
-</form>
-{% endif %}
-
-{% for post in posts %}
-  <div class="post">
-    <a href={{url_for('show_post', post_id = post.postid)}}> 
-      <img src={{url_for('view_image', filename = post.filename)}} alt="User's Post" height="300"></a>
+{% extends "layout.html" %}
+{% block content %}
+  <div class="main">
+    {% if filename %}
+      <img src="{{url_for('viewImage', filename = filename)}}" alt="User Profile" height="120">
+    {% endif %}
+    {{fullname}}
   </div>
-  {% endfor %}
-</body>
-</html>
+{% endblock %}

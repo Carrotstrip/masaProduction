@@ -17,9 +17,10 @@ CREATE TABLE parts(
 	name VARCHAR(20) NOT NULL,
 	number VARCHAR(40) NOT NULL,
 	designer VARCHAR(40) NOT NULL,
-  machinist VARCHAR(64) NOT NULL,
-  designCheck VARCHAR(40) NOT NULL,
-  productionCheck VARCHAR(40) NOT NULL,
+  machinist VARCHAR(64),
+  designCheck VARCHAR(40),
+  productionCheck VARCHAR(40),
+	status VARCHAR(40),
 	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY(number)
 );
@@ -28,10 +29,21 @@ CREATE TABLE ops(
 	name VARCHAR(128) NOT NULL,
 	number VARCHAR(20) NOT NULL,
 	designer VARCHAR(40) NOT NULL,
-	machinist VARCHAR(64) NOT NULL,
+	machinist VARCHAR(64),
+	status VARCHAR(40),
 	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY(number),
   FOREIGN KEY(number) REFERENCES parts(number)
 		ON DELETE CASCADE
 		ON UPDATE CASCADE
+);
+
+CREATE TABLE inventory(
+	number VARCHAR(40) NOT NULL,
+	type VARCHAR(40) NOT NULL,
+  length VARCHAR(64),
+	diameter VARCHAR(64),
+	area VARCHAR(64),
+	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY(number)
 );
