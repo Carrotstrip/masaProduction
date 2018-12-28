@@ -1,5 +1,5 @@
 CREATE TABLE machinists(
-	uniqname VARCHAR(20) NOT NULL,
+	uniqname VARCHAR(8) NOT NULL,
   password VARCHAR(256) NOT NULL,
 	fullname VARCHAR(40) NOT NULL,
 	filename VARCHAR(256),

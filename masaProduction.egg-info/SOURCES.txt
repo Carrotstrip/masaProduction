@@ -1,4 +1,5 @@
 README.md
+setup.py
 masaProduction/__init__.py
 masaProduction/config.py
 masaProduction/model.py

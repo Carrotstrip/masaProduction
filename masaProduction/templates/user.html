@@ -1,9 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
-  <div class="main">
-    {% if filename %}
-      <img src="{{url_for('viewImage', filename = filename)}}" alt="User Profile" height="120">
-    {% endif %}
-    {{fullname}}
+<body>
+    <!-- Plain old HTML and jinja2 nav bar goes here -->
+  <div id="reactEntry">
+    Loading ...
   </div>
+  <!-- Load JavaScript -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/bundle.js') }}"></script>
+</body>
 {% endblock %}

@@ -14,4 +14,5 @@ def showReaders():
     if 'logname' not in flask.session:
         return flask.redirect(flask.url_for('showLogin'))
     context = {}
+    
     return flask.render_template("readers.html", **context)

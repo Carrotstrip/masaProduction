@@ -1,5 +1,6 @@
 """
 masaProduction user view.
+Implemented in React
 
 URLs include:
 

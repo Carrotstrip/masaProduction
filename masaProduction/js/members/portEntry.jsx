@@ -74,11 +74,8 @@ class Post extends React.Component {
     );
   }
 }
-
 Post.propTypes = {
-  ownerUrl: PropTypes.string.isRequired,
-  ownerImgUrl: PropTypes.string.isRequired,
-  status: PropTypes.
+  url: PropTypes.string.isRequired,
 };
 
 export default Post;
