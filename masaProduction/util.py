@@ -70,12 +70,9 @@ def hashFile(request):
     """."""
     # Save POST request's file object to a temp file
     dummy, temp_filename = tempfile.mkstemp()
-    if request.files:
-        file = request.files["file"]
-    else:
-        file = "lavar-ball-feature-071818.jpg"
+    file = request["file"]
     file.save(temp_filename)
-    print(type(file))
+
     # Compute filename
     hash_txt = sha256sum(temp_filename)
     dummy, suffix = os.path.splitext(file.filename)
@@ -86,6 +83,8 @@ def hashFile(request):
     )
 
     # Move temp file to permanent location
+    if not os.path.exists(hash_filename):
+        os.makedirs(hash_filename)
     shutil.move(temp_filename, hash_filename)
     masaProduction.app.logger.debug("Saved %s", hash_filename_basename)
     return hash_filename_basename
