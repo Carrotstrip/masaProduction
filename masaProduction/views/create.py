@@ -3,6 +3,10 @@ masaProduction create view.
 
 URLs include:
 /
+
+TODO give each account a default picture if they don't want to add one so that
+we don't have to handle what if they didn't add one and then we have to check if they did 
+and it's a whole thing. You do need to specify a full name, uniqname, and password
 """
 import flask
 import masaProduction

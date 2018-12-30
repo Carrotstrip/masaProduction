@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // A user profile consists of the following:
+// name, picture, year
 // # Ops completed
 // Hours machined
 // Trainings
-// anything that would be useful to somebody applying for jobs
+// anything that would be useful to somebody applying for jobs for impressing people
 
 class Profile extends React.Component {
   /*
@@ -20,7 +21,7 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    // Call REST API to get number of likes
+    // Call REST API to get user info
     fetch(this.props.url, { credentials: 'same-origin' })
       .then((response) => {
         if (!response.ok) throw Error(response.statusText);
@@ -28,12 +29,11 @@ class Profile extends React.Component {
       })
       .then((data) => {
         this.setState({
-          owner: data.owner,
+          name: data.name,
           age: data.age,
-          owner_img_url: data.owner_img_url,
-          img_url: data.img_url,
-          owner_show_url: data.owner_show_url,
-          post_show_url: data.post_show_url,
+          userImgUrl: data.user_img_url,
+          numOps: data.numOps,
+
         });
       })
       .catch(error => console.log(error));// eslint-disable-line no-console
@@ -51,10 +51,10 @@ class Profile extends React.Component {
   }
 }
 
-// Post.propTypes = {
-//   ownerUrl: PropTypes.string.isRequired,
-//   ownerImgUrl: PropTypes.string.isRequired,
-//   status: PropTypes.string.isRequired
-// };
+Profile.propTypes = {
+  ownerUrl: PropTypes.string.isRequired,
+  ownerImgUrl: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired
+};
 
 export default Profile;
