@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // A user profile consists of the following:
 // name, picture, year
@@ -17,23 +18,35 @@ class Profile extends React.Component {
     // Initialize mutable state
     super(props);
     this.state = {
+      fullname: '',
+      millStatus: '',
+      latheStatus: '',
+      cncMillStatu: '',
+      cncLatheStatus: '',
+      haasStatus: '',
+      available: '',
+      machineStatuses: []
     };
   }
 
   componentDidMount() {
+    var userUrl = '/api/v1.0' + this.props.match.url
+    // console.log(this.props.match.params.uniqname);
     // Call REST API to get user info
-    fetch(this.props.url, { credentials: 'same-origin' })
+    fetch(userUrl, { credentials: 'same-origin' })
       .then((response) => {
         if (!response.ok) throw Error(response.statusText);
         return response.json();
       })
       .then((data) => {
         this.setState({
-          name: data.name,
-          age: data.age,
-          userImgUrl: data.user_img_url,
-          numOps: data.numOps,
-
+          fullname: data.fullname,
+          millStatus: data.millStatus,
+          latheStatus: data.latheStatus,
+          cncMillStatus: data.cncMillStatus,
+          cncLatheStatus: data.cncLatheStatus,
+          haasStatus: data.haasStatus,
+          available: data.available,
         });
       })
       .catch(error => console.log(error));// eslint-disable-line no-console
@@ -44,7 +57,8 @@ class Profile extends React.Component {
     return (
       <div className="profile">
         <p>
-          Yo
+          Yo, {this.state.fullname}<br></br>
+          Mill Status: {this.state.millStatus}
         </p>
       </div>
     );
@@ -52,9 +66,7 @@ class Profile extends React.Component {
 }
 
 Profile.propTypes = {
-  ownerUrl: PropTypes.string.isRequired,
-  ownerImgUrl: PropTypes.string.isRequired,
-  status: PropTypes.string.isRequired
+  // url: PropTypes.string.isRequired,
 };
 
 export default Profile;
