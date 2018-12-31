@@ -19,3 +19,4 @@ app.config.from_envvar('MASAPRODUCTION_SETTINGS', silent=True)
 # going to tell pylint and pycodestyle to ignore this coding style violation.
 import masaProduction.views  # noqa: E402  pylint: disable=wrong-import-position
 import masaProduction.model  # noqa: E402  pylint: disable=wrong-import-position
+import masaProduction.api  # noqa: E402  pylint: disable=wrong-import-position
