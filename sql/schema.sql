@@ -2,7 +2,7 @@ CREATE TABLE machinists(
 	uniqname VARCHAR(8) NOT NULL,
   password VARCHAR(256) NOT NULL,
 	fullname VARCHAR(40) NOT NULL,
-	filename VARCHAR(256),
+	profilePic VARCHAR(256),
 	millStatus VARCHAR(40),
   latheStatus VARCHAR(40),
   cncMillStatus VARCHAR(40),
@@ -39,7 +39,7 @@ CREATE TABLE ops(
 );
 
 CREATE TABLE inventory(
-	number VARCHAR(40) NOT NULL,
+	id VARCHAR(40) NOT NULL,
 	type VARCHAR(40) NOT NULL,
   length VARCHAR(64),
 	diameter VARCHAR(64),

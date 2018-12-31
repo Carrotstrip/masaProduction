@@ -25,7 +25,10 @@ def showCreate():
         # TODO add the comment on the next line back if we ever do password hashing
         data['password'] = flask.request.form['password'] # hashPassword(flask.request.form['password'])
         data['fullname'] = flask.request.form['fullname']
-        data['filename'] = hashFile(flask.request.files)
+        if flask.request.files:
+            data['filename'] = hashFile(flask.request.files)
+        else:
+            data['filename'] = '/var/uploads/default.jpg'
         dbUsernames = cursor.execute("SELECT uniqname FROM machinists").fetchall()
         dbUsernameList = []
         for pair in dbUsernames:

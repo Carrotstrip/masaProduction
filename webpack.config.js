@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './masaProduction/js/members/main.jsx',
+  entry: './masaProduction/js/main.jsx',
   output: {
     path: path.join(__dirname, '/masaProduction/static/js/'),
     filename: 'bundle.js',
