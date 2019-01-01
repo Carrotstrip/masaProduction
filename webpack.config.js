@@ -1,5 +1,11 @@
 const path = require('path');
 
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+
+const config = {
+  plugins: [ new UglifyJSPlugin() ] 
+}
+
 module.exports = {
   entry: './masaProduction/js/main.jsx',
   output: {
