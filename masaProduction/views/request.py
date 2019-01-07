@@ -1,5 +1,5 @@
 """
-masaProduction user view.
+masaProduction part request view.
 Implemented in React
 
 URLs include:
@@ -10,9 +10,9 @@ import masaProduction
 from masaProduction.util import hashFile, getCursor
 
 
-@masaProduction.app.route('/u/<username>/', methods=('GET', 'POST'))
-def showUser(username):
-    """Display /u/<username>/ route."""
+@masaProduction.app.route('/request/', methods=('GET', 'POST'))
+def showRequest():
+    """Display /request/ route."""
     if 'logname' not in flask.session:
         return flask.redirect(flask.url_for('showLogin'))
     context = {}

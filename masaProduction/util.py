@@ -7,11 +7,20 @@ import uuid
 import hashlib
 import tempfile
 import flask
+from flask_mail import Message
 import masaProduction
 
 # this is a list of all the admins, these people have special powers
 # kept behind the isAdmin util function
 admins = ["wolfaust", "rishiji"]
+
+def sendMail(subject, recipients, body):
+    with masaProduction.app.app_context():
+        msg = Message(subject=subject,
+                        sender="wolfaust@umich.edu",
+                        recipients=recipients, # replace with your email for testing
+                        body=body)
+        masaProduction.mail.send(msg)
 
 
 @masaProduction.app.route('/uploads/<path:filename>')
@@ -66,11 +75,11 @@ def sha256sum(filename):
     return sha256_obj.hexdigest()
 
 
-def hashFile(request):
+def hashFile(request, filename):
     """."""
     # Save POST request's file object to a temp file
     dummy, temp_filename = tempfile.mkstemp()
-    file = request["file"]
+    file = request[filename]
     file.save(temp_filename)
 
     # Compute filename
@@ -83,10 +92,8 @@ def hashFile(request):
     )
 
     # Move temp file to permanent location
-    if not os.path.exists(hash_filename):
-        os.makedirs(hash_filename)
     shutil.move(temp_filename, hash_filename)
-    masaProduction.app.logger.debug("Saved %s", hash_filename_basename)
+    print("Saved %s", hash_filename_basename)
     return hash_filename_basename
 
 

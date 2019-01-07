@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-// import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Image from './image'
 
 // A user profile consists of the following:
 // name, picture, year
@@ -21,11 +20,11 @@ class Profile extends React.Component {
       fullname: '',
       millStatus: '',
       latheStatus: '',
-      cncMillStatu: '',
+      cncMillStatus: '',
       cncLatheStatus: '',
       haasStatus: '',
       available: '',
-      machineStatuses: []
+      filename: ''
     };
   }
 
@@ -47,6 +46,7 @@ class Profile extends React.Component {
           cncLatheStatus: data.cncLatheStatus,
           haasStatus: data.haasStatus,
           available: data.available,
+          img_url: data.img_url
         });
       })
       .catch(error => console.log(error));// eslint-disable-line no-console
@@ -56,17 +56,36 @@ class Profile extends React.Component {
     
     return (
       <div className="profile">
-        <p>
-          Yo, {this.state.fullname}<br></br>
-          Mill Status: {this.state.millStatus}
-        </p>
+        <div className="profilePic">
+          <profileData>
+            <Image url={this.state.img_url} />
+            {/* <img src={this.state.img_url} alt="profilePic" width={100} height={100} /> */}
+            {this.state.fullname}
+          </profileData>
+        </div>
+
+
+        <table id="userTable">
+          <tr>
+            <th>mill status</th>
+            <th>lathe status</th>
+            <th>cnc mill status</th>
+            <th>cnc lathe status</th>
+            <th>haas status</th>
+            <th>available</th>
+          </tr>
+          <tr>
+            <td>{this.state.millStatus}</td>
+            <td>{this.state.latheStatus}</td>
+            <td>{this.state.cncMillStatus}</td>
+            <td>{this.state.cncLatheStatus}</td>
+            <td>{this.state.haasStatus}</td>
+            <td>{this.state.available}</td>
+          </tr> 
+        </table>
       </div>
     );
   }
 }
-
-Profile.propTypes = {
-  // url: PropTypes.string.isRequired,
-};
 
 export default Profile;

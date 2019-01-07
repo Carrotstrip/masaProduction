@@ -47,6 +47,7 @@
 
       li {
         list-style-type: none;
+        text-align: left;
       }
 
       topright {
@@ -80,6 +81,11 @@
         color: rgb(255, 0, 0)
       }
 
+      profileData { 
+        position: relative;
+        margin-top: 0;
+      }
+
     </style>
   </head>
 
@@ -91,12 +97,12 @@
         <strong>
             <div class="navbar" class="menu">
               <navli><a href="{{ url_for('showIndex') }}">home</a></navli>
-              <navli><a href="{{ url_for('showParts') }}">parts</a></navli>
               <navli><a href="{{ url_for('showMembers') }}">members</a></navli>
+              <navli><a href="{{ url_for('showRequest') }}">request a part</a></navli>
+              <navli><a href="{{ url_for('showParts') }}">parts</a></navli>
               <navli><a href="{{ url_for('showReaders') }}">readers</a></navli>
               <navli><a href="{{ url_for('showLogout') }}">logout</a></navli>
               <navli><a href="{{ url_for('showEdit') }}">edit</a></navli>
-              <navli><a href="{{ url_for('showAbout') }}">about</a></navli>
               {% if session.logname %}
                 <navli style="float: right; display: block;
                 color: white;

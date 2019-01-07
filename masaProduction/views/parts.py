@@ -14,4 +14,4 @@ def showParts():
     if 'logname' not in flask.session:
         return flask.redirect(flask.url_for('showLogin'))
     context = {}
-    return flask.render_template("parts.html", **context)
+    return flask.render_template("index.html", **context)

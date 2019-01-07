@@ -20,6 +20,7 @@ def getProfile(uniqname):
         "SELECT * FROM machinists "
         "   WHERE uniqname = ?",
         (uniqname,)).fetchone()
+    context['img_url'] = '/uploads/' + context['filename']
     print(context)
     return flask.jsonify(**context)
 

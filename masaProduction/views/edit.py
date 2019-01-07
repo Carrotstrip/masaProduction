@@ -6,6 +6,7 @@ URLs include:
 """
 import os
 import flask
+import shutil
 import masaProduction
 from masaProduction.util import hashFile, getCursor, viewImage
 
@@ -19,18 +20,21 @@ def showEdit():
     context = {}
     cursor = getCursor()
     data['logname'] = flask.session['logname']
+    context['profilePic'] = cursor.execute("SELECT profilePic FROM machinists\
+        WHERE uniqname = :logname", data).fetchone()['profilePic']
     if flask.request.method == 'POST':
         data['fullname'] = flask.request.form['fullname']
         data['uniqname'] = flask.request.form['uniqname']
         if 'file' in flask.request.files:
-            data['hashed_filename'] = hashFile(flask.request)
             # Delete old file
-            filename = cursor.execute("SELECT filename\
+            profilePic = cursor.execute("SELECT profilePic\
                                       FROM machinists where\
                                       uniqname = :logname\
-                                      ", data).fetchone()['filename']
-            os.remove(masaProduction.app.config['UPLOAD_FOLDER'] + "/" + filename)
-            cursor.execute("UPDATE machinists SET filename = :hashed_filename,\
+                                      ", data).fetchone()['profilePic']
+            if os.path.exists(masaProduction.app.config['UPLOAD_FOLDER'] + "/" + profilePic):
+                os.remove(masaProduction.app.config['UPLOAD_FOLDER'] + "/" + profilePic)
+            data['hashed_profilePic'] = hashFile(flask.request.files)
+            cursor.execute("UPDATE machinists SET profilePic = :hashed_profilePic,\
                            fullname = :fullname, uniqname = :uniqname WHERE \
                            uniqname = :logname", data)
         elif 'file' not in flask.request.files:
@@ -38,7 +42,6 @@ def showEdit():
              uniqname = :uniqname WHERE uniqname = :logname", data)
         flask.session['logname'] = data['uniqname']
         context['logname'] = flask.session['logname']
-        print(data['uniqname'], context['logname'])
-        context['filename'] = cursor.execute("SELECT filename FROM machinists\
-            WHERE uniqname = :logname", context).fetchone()['filename']
+        context['profilePic'] = cursor.execute("SELECT profilePic FROM machinists\
+            WHERE uniqname = :logname", context).fetchone()['profilePic']
     return flask.render_template("edit.html", **context)

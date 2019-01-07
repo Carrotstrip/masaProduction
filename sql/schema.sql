@@ -9,31 +9,37 @@ CREATE TABLE machinists(
   cncLatheStatus VARCHAR(40),
   haasStatus VARCHAR(40),
 	available VARCHAR(40),
+	queuePosition VARCHAR(40),
 	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY(uniqname)
 );
 
 CREATE TABLE parts(
-	name VARCHAR(20) NOT NULL,
-	number VARCHAR(40) NOT NULL,
+	id integer NOT NULL,
+	name VARCHAR(40) NOT NULL,
+	number VARCHAR(20) NOT NULL,
+	deadline DATE,
 	designer VARCHAR(40) NOT NULL,
   machinist VARCHAR(64),
+	cadModel VARCHAR(64),
+	drawing VARCHAR(64),
   designCheck VARCHAR(40),
   productionCheck VARCHAR(40),
 	status VARCHAR(40),
 	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY(number)
+	PRIMARY KEY(id)
 );
 
 CREATE TABLE ops(
-	name VARCHAR(128) NOT NULL,
+	id VARCHAR(20) NOT NULL,
+	name VARCHAR(40) NOT NULL,
 	number VARCHAR(20) NOT NULL,
 	designer VARCHAR(40) NOT NULL,
 	machinist VARCHAR(64),
 	status VARCHAR(40),
 	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY(number),
-  FOREIGN KEY(number) REFERENCES parts(number)
+	PRIMARY KEY(id),
+  FOREIGN KEY(id) REFERENCES parts(id)
 		ON DELETE CASCADE
 		ON UPDATE CASCADE
 );
@@ -45,5 +51,5 @@ CREATE TABLE inventory(
 	diameter VARCHAR(64),
 	area VARCHAR(64),
 	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY(number)
+	PRIMARY KEY(id)
 );

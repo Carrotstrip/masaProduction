@@ -26,9 +26,9 @@ def showCreate():
         data['password'] = flask.request.form['password'] # hashPassword(flask.request.form['password'])
         data['fullname'] = flask.request.form['fullname']
         if flask.request.files:
-            data['filename'] = hashFile(flask.request.files)
+            data['filename'] = hashFile(flask.request.files, 'file')
         else:
-            data['filename'] = '/var/uploads/default.jpg'
+            data['filename'] = 'default.jpg'
         dbUsernames = cursor.execute("SELECT uniqname FROM machinists").fetchall()
         dbUsernameList = []
         for pair in dbUsernames:
@@ -40,7 +40,7 @@ def showCreate():
             flask.flash("you didn't make a password, try again!")
             return flask.redirect(flask.url_for('showCreate'))
         cursor.execute('INSERT INTO machinists \
-                       (uniqname, fullname, password, filename) \
+                       (uniqname, fullname, password, profilePic) \
                        VALUES (:uniqname, :fullname,\
                         :password, :filename)', data)
         flask.session['logname'] = data['uniqname']
