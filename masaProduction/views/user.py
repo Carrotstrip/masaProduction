@@ -10,8 +10,8 @@ import masaProduction
 from masaProduction.util import hashFile, getCursor
 
 
-@masaProduction.app.route('/u/<username>/', methods=('GET', 'POST'))
-def showUser(username):
+@masaProduction.app.route('/u/<uniqname>/', methods=('GET', 'POST'))
+def showUser(uniqname):
     """Display /u/<username>/ route."""
     if 'logname' not in flask.session:
         return flask.redirect(flask.url_for('showLogin'))

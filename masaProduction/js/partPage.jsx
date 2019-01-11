@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Image from './image';
-
+import {OBJModel} from 'react-3d-viewer'
 
 class PartPage extends React.Component {
   /* 

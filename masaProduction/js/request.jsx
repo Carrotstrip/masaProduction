@@ -1,5 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import DatePicker from "react-datepicker";
+
+// import "react-datepicker/dist/react-datepicker.css";
 
 class Request extends React.Component {
   /* Display number of likes a like/unlike button for one post
@@ -19,9 +21,10 @@ class Request extends React.Component {
       leadMachinist: '',
       cadModel: '',
       drawing: '',
-      deadline: ''
+      deadline: new Date()
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -31,15 +34,23 @@ class Request extends React.Component {
     });
   }
 
+  handleDateChange(date) {
+    this.setState({
+      deadline: date
+    });
+  }
+
   handleSubmit(event) {
     var requestUrl = "/api/v1.0/request/"
     var data = new FormData();
+    var deadline = new Intl.DateTimeFormat('en-US').format(this.state.deadline)
+    console.log(deadline)
     data.append('cadModel', this.cadModel.files[0]);
     data.append('drawing', this.drawing.files[0]);
     data.append('partName', this.state.partName);
     data.append('partNumber', this.state.partNumber);
     data.append('designer', this.state.leadDesigner);
-    data.append('deadline', this.state.deadline);
+    data.append('deadline', deadline);
     fetch(requestUrl,
       {
         method: 'POST',
@@ -66,7 +77,14 @@ class Request extends React.Component {
             <label>lead designer</label>
             <input name="leadDesigner" type="text" value={this.state.leadDesigner} onChange={this.handleChange} />
             <label>deadline</label>
-            <input name="deadline" type="text" value={this.state.deadline} onChange={this.handleChange} />
+            <DatePicker
+              selected={this.state.deadline}
+              onChange={this.handleDateChange}
+              minDate={new Date()}
+              placeholderText="Click to select a date"
+              dateFormat="MM/dd/yyyy"
+            />
+            {/* <input name="deadline" type="text" value={this.state.deadline} onChange={this.handleChange} /> */}
             <label>CAD model</label>
             <input ref={(ref) => { this.cadModel = ref; }} name="cadModel" type='file' />
             <label>drawing</label>

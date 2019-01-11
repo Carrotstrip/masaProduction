@@ -6,15 +6,17 @@ import Home from './home'
 import Parts from './parts'
 import Request from './request'
 import PartPage from './partPage'
+import Edit from './edit'
 
 ReactDOM.render(
     <Router history={browserHistory} >
         <div>
           <Route exact path='/' component={Home} />
-          <Route path='/u/:uniqname/' component={Profile} />
+          <Route exact path='/u/:uniqname/' component={Profile} />
           <Route exact path='/parts/' component={Parts} />
-          <Route path='/parts/:partId' component={PartPage} />
+          <Route path='/parts/:partId/' component={PartPage} />
           <Route path='/request/' component={Request} />
+          <Route exact path='/u/:uniqname/edit/' component={Edit} />
         </div>
     </Router>,
   document.getElementById('reactEntry'),

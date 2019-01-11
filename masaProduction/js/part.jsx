@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import Image from './image';
-
+import {OBJModel} from 'react-3d-viewer'
 
 class Part extends React.Component {
   /* 
@@ -41,10 +41,11 @@ class Part extends React.Component {
           machinist: data.machinist,
           designer: data.designer,
           cadModel: data.cadModel,
+          drawing: data.drawing,
           deadline: data.deadline
         });
       })
-      .catch(error => console.log(error));// eslint-disable-line no-console
+      .catch(error => console.log(error)); // eslint-disable-line no-console
   }
 
   render() {
@@ -61,18 +62,19 @@ class Part extends React.Component {
       border: '2px solid red',
     };
     return (
-      <Link to={`/parts/${this.props.id}`}>
       <span className="Part" style={PartStyle} >
         <p>
-          <Image url={`/uploads/${this.state.cadModel}`} />
+          <OBJModel src={`/uploads/${this.state.cadModel}`} texPath="" width={200} height={200} />
+          {/* <OBJModel src="/uploads/cube.obj" texPath="" width={200} height={200} /> */}
+          <Image url={`/uploads/${this.state.drawing}`} />
           <ul>
             <li>Lead Machinist: {this.state.machinist}</li>
             <li>Lead Designer: {this.state.designer}</li>
             <li>Deadline: {this.state.deadline}</li>
+            <li><Link to={`/parts/${this.props.id}`}>more detail</Link></li>
           </ul>
         </p>
       </span>
-      </Link>
     );
   }
 }

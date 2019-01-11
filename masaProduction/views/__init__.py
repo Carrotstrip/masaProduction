@@ -1,6 +1,5 @@
 """Views, one for each page."""
 from masaProduction.views.index import showIndex
-from masaProduction.views.about import showAbout
 from masaProduction.views.login import showLogin
 from masaProduction.views.create import showCreate
 from masaProduction.views.delete import showDelete

@@ -1,10 +1,9 @@
 """REST API for resources."""
 import flask
-import insta485
-from insta485.util import check_user
+import masaProduction
 
 
-@insta485.app.route('/api/v1/', methods=["GET"])
+@masaProduction.app.route('/api/v1/', methods=["GET"])
 def get_urls():
     """Docstring."""
     resp = check_user(flask.session)

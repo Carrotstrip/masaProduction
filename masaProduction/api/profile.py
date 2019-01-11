@@ -20,14 +20,13 @@ def getProfile(uniqname):
         "SELECT * FROM machinists "
         "   WHERE uniqname = ?",
         (uniqname,)).fetchone()
-    context['img_url'] = '/uploads/' + context['filename']
-    print(context)
+    context['img_url'] = '/uploads/' + context['profilePic']
     return flask.jsonify(**context)
 
 
 @masaProduction.app.route('/api/v1/p/<int:postid_url_slug>/comments/',
                     methods=["POST"])
-def add_comment(postid_url_slug):
+def addComment(postid_url_slug):
     """Docstring."""
     logname = flask.session["username"]
     context = {}
