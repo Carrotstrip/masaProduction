@@ -7,6 +7,8 @@ import Parts from './parts'
 import Request from './request'
 import PartPage from './partPage'
 import Edit from './edit'
+import Readers from './readers'
+import ReaderPage from './readerPage'
 
 ReactDOM.render(
     <Router history={browserHistory} >
@@ -15,6 +17,8 @@ ReactDOM.render(
           <Route exact path='/u/:uniqname/' component={Profile} />
           <Route exact path='/parts/' component={Parts} />
           <Route path='/parts/:partId/' component={PartPage} />
+          <Route exact path='/readers/' component={Readers} />
+          <Route exact path='/readers/:partId' component={ReaderPage} />
           <Route path='/request/' component={Request} />
           <Route exact path='/u/:uniqname/edit/' component={Edit} />
         </div>

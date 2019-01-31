@@ -71,11 +71,11 @@ class Request extends React.Component {
         {
           <form ref={this.myRef} id="typedInfo" onSubmit={this.handleSubmit} action="" method="post" encType="multipart/form-data">
             <label>part name</label>
-            <input name="partName" type="text" value={this.state.partName} onChange={this.handleChange} />
+            <input name="partName" type="text" value={this.state.partName} onChange={this.handleChange} /><br></br>
             <label>part number</label>
-            <input name="partNumber" type="text" value={this.state.partNumber} onChange={this.handleChange} />
+            <input name="partNumber" type="text" value={this.state.partNumber} onChange={this.handleChange} /><br></br>
             <label>lead designer</label>
-            <input name="leadDesigner" type="text" value={this.state.leadDesigner} onChange={this.handleChange} />
+            <input name="leadDesigner" type="text" value={this.state.leadDesigner} onChange={this.handleChange} /><br></br>
             <label>deadline</label>
             <DatePicker
               selected={this.state.deadline}
@@ -83,12 +83,12 @@ class Request extends React.Component {
               minDate={new Date()}
               placeholderText="Click to select a date"
               dateFormat="MM/dd/yyyy"
-            />
+            /><br></br>
             {/* <input name="deadline" type="text" value={this.state.deadline} onChange={this.handleChange} /> */}
             <label>CAD model</label>
-            <input ref={(ref) => { this.cadModel = ref; }} name="cadModel" type='file' />
+            <input ref={(ref) => { this.cadModel = ref; }} name="cadModel" type='file' /><br></br>
             <label>drawing</label>
-            <input ref={(ref) => { this.drawing = ref; }} name="drawing" type='file' />
+            <input ref={(ref) => { this.drawing = ref; }} name="drawing" type='file' /><br></br>
             <input type="submit" name="submit" value="submit"/>
           </form>
         }

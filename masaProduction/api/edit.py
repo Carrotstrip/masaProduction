@@ -11,7 +11,6 @@ def editAccount(initUniqname):
     context = {}
     data = {}
     cur = getCursor()
-    print(flask.request.form)
     uniqname = flask.request.form['uniqname']
     if 'profilePic' in flask.request.files:
         profilePic = hashFile(flask.request.files, 'profilePic')

@@ -15,4 +15,4 @@ def showReaders():
         return flask.redirect(flask.url_for('showLogin'))
     context = {}
     
-    return flask.render_template("readers.html", **context)
+    return flask.render_template("index.html", **context)

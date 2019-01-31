@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import Image from './image';
-import {OBJModel} from 'react-3d-viewer'
+// import {OBJModel} from 'react-3d-viewer'
 
 class Part extends React.Component {
   /* 
@@ -64,7 +64,8 @@ class Part extends React.Component {
     return (
       <span className="Part" style={PartStyle} >
         <p>
-          <OBJModel src={`/uploads/${this.state.cadModel}`} texPath="" width={200} height={200} />
+          {/* {`/uploads/${this.state.cadModel}`} */}
+          {/* <OBJModel src={`/uploads/${this.state.cadModel}`} texPath="" width={200} height={200} /> */}
           {/* <OBJModel src="/uploads/cube.obj" texPath="" width={200} height={200} /> */}
           <Image url={`/uploads/${this.state.drawing}`} />
           <ul>

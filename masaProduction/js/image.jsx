@@ -17,7 +17,7 @@ class Image extends React.Component {
     return (
       <div className="image">
         <p>
-          <img src={this.props.url} alt="user profile pic" width={200} height={200} />
+          <img src={this.props.url} alt="user profile pic" id='responsive-image' />
         </p>
       </div>
     );

@@ -58,7 +58,7 @@ class Profile extends React.Component {
       <div className="profile">
         <div className="profilePic">
           <profileData>
-            <Image url={this.state.img_url} />
+            <Image url={this.state.img_url} width={200} height={200} />
             {/* <img src={this.state.img_url} alt="profilePic" width={100} height={100} /> */}
             {this.state.fullname}
           </profileData>
