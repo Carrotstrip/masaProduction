@@ -58,9 +58,10 @@ class Edit extends React.Component {
   }
 
   handleSubmit(event) {
-    // event.preventDefault()
+    event.preventDefault()
     // var editUrl = '/api/v1.0/request/'
-    var editUrl = '/api/v1.0' + this.props.match.url    
+    var editUrl = '/api/v1.0' + this.props.match.url  
+    console.log(editUrl)  
     var data = new FormData();
     data.append('title', 'mydata')
     data.append('fullName', this.state.fullName);
@@ -77,7 +78,6 @@ class Edit extends React.Component {
     data.append('haasStatus', this.state.haasStatus);
     data.append('available', this.state.available);
     console.log(data)
-    console.log(editUrl)
     fetch(editUrl,
       {
         method: 'POST',

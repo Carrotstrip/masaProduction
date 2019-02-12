@@ -44,8 +44,7 @@ class Request extends React.Component {
     var requestUrl = "/api/v1.0/request/"
     var data = new FormData();
     var deadline = new Intl.DateTimeFormat('en-US').format(this.state.deadline)
-    console.log(deadline)
-    data.append('cadModel', this.cadModel.files[0]);
+    // data.append('cadModel', this.cadModel.files[0]);
     data.append('drawing', this.drawing.files[0]);
     data.append('partName', this.state.partName);
     data.append('partNumber', this.state.partNumber);
@@ -85,9 +84,9 @@ class Request extends React.Component {
               dateFormat="MM/dd/yyyy"
             /><br></br>
             {/* <input name="deadline" type="text" value={this.state.deadline} onChange={this.handleChange} /> */}
-            <label>CAD model</label>
-            <input ref={(ref) => { this.cadModel = ref; }} name="cadModel" type='file' /><br></br>
-            <label>drawing</label>
+            {/* <label>CAD model</label>
+            <input ref={(ref) => { this.cadModel = ref; }} name="cadModel" type='file' /><br></br> */}
+            <label>drawing (jpg please)</label>
             <input ref={(ref) => { this.drawing = ref; }} name="drawing" type='file' /><br></br>
             <input type="submit" name="submit" value="submit"/>
           </form>

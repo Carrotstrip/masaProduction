@@ -44,10 +44,9 @@ def getParts():
 @masaProduction.app.route('/api/v1.0/request/', methods=["POST"])
 def requestPart():
     """Docstring."""
-    
     context = {}
     cur = getCursor()
-    cadModel = hashFile(flask.request.files, 'cadModel')
+    # cadModel = hashFile(flask.request.files, 'cadModel')
     drawing = hashFile(flask.request.files, 'drawing')
     name = flask.request.form['partName']
     number = flask.request.form['partNumber']
@@ -56,11 +55,12 @@ def requestPart():
     machinist = 'unassigned'
     designCheck = 'no'
     productionCheck = 'no'
+    print('f')
     cur.execute(
         "INSERT INTO parts "
-        "   (name, number, deadline, designer, machinist, cadModel, drawing, designCheck, productionCheck)"
-        "   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-        (name, number, deadline, designer, machinist, cadModel, drawing, designCheck, productionCheck)
+        "   (name, number, deadline, designer, machinist, drawing, designCheck, productionCheck)"
+        "   VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        (name, number, deadline, designer, machinist, drawing, designCheck, productionCheck)
     )
     resp = flask.jsonify(**context)
     resp.status_code = 201

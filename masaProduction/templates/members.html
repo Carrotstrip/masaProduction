@@ -35,7 +35,7 @@
             } else {
               tr[i].style.display = "none";
             }
-            if(checked) {
+            if(!checked) {
               tr[i].style.display = "";
             }
           }
@@ -45,7 +45,7 @@
 
 <input type="text" id="filterInput" onkeyup="filterName()" placeholder="Search for names...">
 <input type="checkbox" id="filterAvailabilityCheck" onclick="filterAvailability()" value="Filter by Availability">
-show nonavailable members</input>
+filter by availability</input>
 
     <table id="memberTable">
       <tr>
@@ -61,7 +61,7 @@ show nonavailable members</input>
       {% for member in members %}
         <tr>
           <td><a href={{url_for('showUser', uniqname = member.uniqname)}}>{{member.fullname}}</a></td>
-          <td><a href="{{member.uniqname}}@umich.edu">{{member.uniqname}}@umich.edu</a></td>
+          <td>{{member.uniqname}}@umich.edu</td>
           <td>{{member.millStatus}}</td>
           <td>{{member.latheStatus}}</td>
           <td>{{member.cncMillStatus}}</td>

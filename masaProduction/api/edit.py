@@ -6,8 +6,6 @@ from masaProduction.util import getCursor, hashFile
 @masaProduction.app.route('/api/v1.0/u/<string:initUniqname>/edit/', methods=["POST"])
 def editAccount(initUniqname):
     """Docstring."""
-    """Right now this function replaces everything even if you put nothing in there, maybe we make it
-    only replace things that you actually changed in the edit form?"""
     context = {}
     data = {}
     cur = getCursor()
@@ -29,9 +27,6 @@ def editAccount(initUniqname):
     data['cncLatheStatus'] = flask.request.form['cncLatheStatus']
     data['haasStatus'] = flask.request.form['haasStatus']
     data['available'] = flask.request.form['available']
-    """here just check if any of these fields are empty strings, and if they are then set them to whatever
-    they already are in the database, which will involve a query. better way? maybe if it's empty tell the update query to
-    not update that column? how?"""
     flask.session['logname'] = uniqname
     cur.execute("UPDATE machinists SET profilePic = :profilePic, "
                            " fullname = :fullName, uniqname = :uniqname, password = :password, millStatus = :millStatus, "

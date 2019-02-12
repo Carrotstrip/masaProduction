@@ -17421,8 +17421,7 @@ var Request = function (_React$Component) {
       var requestUrl = "/api/v1.0/request/";
       var data = new FormData();
       var deadline = new Intl.DateTimeFormat('en-US').format(this.state.deadline);
-      console.log(deadline);
-      data.append('cadModel', this.cadModel.files[0]);
+      // data.append('cadModel', this.cadModel.files[0]);
       data.append('drawing', this.drawing.files[0]);
       data.append('partName', this.state.partName);
       data.append('partNumber', this.state.partNumber);
@@ -17487,19 +17486,10 @@ var Request = function (_React$Component) {
           _react2.default.createElement(
             'label',
             null,
-            'CAD model'
+            'drawing (jpg please)'
           ),
           _react2.default.createElement('input', { ref: function ref(_ref) {
-              _this2.cadModel = _ref;
-            }, name: 'cadModel', type: 'file' }),
-          _react2.default.createElement('br', null),
-          _react2.default.createElement(
-            'label',
-            null,
-            'drawing'
-          ),
-          _react2.default.createElement('input', { ref: function ref(_ref2) {
-              _this2.drawing = _ref2;
+              _this2.drawing = _ref;
             }, name: 'drawing', type: 'file' }),
           _react2.default.createElement('br', null),
           _react2.default.createElement('input', { type: 'submit', name: 'submit', value: 'submit' })
@@ -29826,7 +29816,6 @@ var PartPage = function (_React$Component) {
 
       var partPageUrl = '/api/v1.0/parts/' + this.props.match.params.partId + '/';
       // Call REST API to get part info
-      console.log('/api/v1.0' + this.props.match.url);
       fetch(partPageUrl, { credentials: 'same-origin' }).then(function (response) {
         if (!response.ok) throw Error(response.statusText);
         return response.json();
@@ -29854,6 +29843,7 @@ var PartPage = function (_React$Component) {
         _react2.default.createElement(
           'p',
           null,
+          '/uploads/' + this.state.cadModel,
           _react2.default.createElement(
             'table',
             { id: 'userTable' },
@@ -30064,9 +30054,10 @@ var Edit = function (_React$Component) {
   }, {
     key: 'handleSubmit',
     value: function handleSubmit(event) {
-      // event.preventDefault()
+      event.preventDefault();
       // var editUrl = '/api/v1.0/request/'
       var editUrl = '/api/v1.0' + this.props.match.url;
+      console.log(editUrl);
       var data = new FormData();
       data.append('title', 'mydata');
       data.append('fullName', this.state.fullName);
@@ -30083,7 +30074,6 @@ var Edit = function (_React$Component) {
       data.append('haasStatus', this.state.haasStatus);
       data.append('available', this.state.available);
       console.log(data);
-      console.log(editUrl);
       fetch(editUrl, {
         method: 'POST',
         body: data

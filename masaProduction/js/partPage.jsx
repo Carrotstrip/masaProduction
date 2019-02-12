@@ -72,7 +72,6 @@ class PartPage extends React.Component {
   componentDidMount() {
     var partPageUrl = '/api/v1.0/parts/' + this.props.match.params.partId + '/'
     // Call REST API to get part info
-    console.log('/api/v1.0' + this.props.match.url )
     fetch(partPageUrl, { credentials: 'same-origin' })
       .then((response) => {
         if (!response.ok) throw Error(response.statusText);
@@ -97,7 +96,7 @@ class PartPage extends React.Component {
     return (
       <div className="PartPage">
         <p>
-          {/* {`/uploads/${this.state.cadModel}`} */}
+          {`/uploads/${this.state.cadModel}`}
           {/* <OBJModel src={'/uploads/' + this.state.cadModel} texPath="" /> */}
           <table id="userTable">
           <tr>
@@ -132,7 +131,8 @@ class PartPage extends React.Component {
         <form ref={this.myRef} action="" method="post" onSubmit={this.handleSubmit} encType="multipart/form-data">
           <input type="submit" name="update" value="submit"/>
         </form>
-          {/* <OBJModel src={`/uploads/${this.state.cadModel}`} texPath="" /> */}
+          {/* <OBJModel src={`${this.state.cadModel}`} texPath="/uploads/" /> */}
+          {/* <OBJModel src={`cube.obj`} texPath="/uploads/" /> */}
           <Image url={`/uploads/${this.state.drawing}`} />
         </p>
       </div>
