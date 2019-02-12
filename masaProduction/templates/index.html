@@ -1,6 +1,21 @@
 {% extends "layout.html" %}
 {% block content %}
-  <div class="main">
-    Welcome to the MASA Production site!
-  </div>
+<body>
+  <!-- Plain old HTML and jinja2 nav bar goes here -->
+<div id="reactEntry">
+  Loading ...
+</div>
+<!-- Load JavaScript -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/bundle.js') }}"></script>
+</body>
+
+  <!-- <div class="main">
+    Welcome to the MASA Production site! This site is meant to streamline the logistics of producing parts.
+    The layout is as follows:<br></br>
+    Members: contains data on all production members<br></br>
+    Parts: contains all information on approved parts<br></br>
+    Readers: contains all parts awaiting approval, and serves as a public platform for deciding approval<br></br>
+    
+    
+  </div> -->
 {% endblock %}

@@ -26,7 +26,6 @@ def showPassword():
         new_input_password1 = flask.request.form['new_password1']
         new_input_password2 = flask.request.form['new_password2']
         if not matchesDbPassword(old_input_password, old_db_password):
-            print("f")
             flask.abort(403)
         # Check if both new passwords match. abort 401 otherwise.
         if new_input_password1 != new_input_password2:
@@ -36,6 +35,6 @@ def showPassword():
         cursor.execute("UPDATE users SET password =\
                        :new_hashed WHERE username = :username", data)
         # Upon successful submission, redirect to /accounts/edit/.
-        return flask.redirect(flask.url_for('show_edit'))
+        return flask.redirect(flask.url_for('showEdit'))
     context = {}
     return flask.render_template("password.html", **context)

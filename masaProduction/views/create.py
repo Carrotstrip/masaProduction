@@ -3,6 +3,10 @@ masaProduction create view.
 
 URLs include:
 /
+
+TODO give each account a default picture if they don't want to add one so that
+we don't have to handle what if they didn't add one and then we have to check if they did 
+and it's a whole thing. You do need to specify a full name, uniqname, and password
 """
 import flask
 import masaProduction
@@ -21,7 +25,10 @@ def showCreate():
         # TODO add the comment on the next line back if we ever do password hashing
         data['password'] = flask.request.form['password'] # hashPassword(flask.request.form['password'])
         data['fullname'] = flask.request.form['fullname']
-        data['filename'] = hashFile(flask.request)
+        if flask.request.files:
+            data['filename'] = hashFile(flask.request.files, 'file')
+        else:
+            data['filename'] = 'default.jpg'
         dbUsernames = cursor.execute("SELECT uniqname FROM machinists").fetchall()
         dbUsernameList = []
         for pair in dbUsernames:
@@ -33,7 +40,7 @@ def showCreate():
             flask.flash("you didn't make a password, try again!")
             return flask.redirect(flask.url_for('showCreate'))
         cursor.execute('INSERT INTO machinists \
-                       (uniqname, fullname, password, filename) \
+                       (uniqname, fullname, password, profilePic) \
                        VALUES (:uniqname, :fullname,\
                         :password, :filename)', data)
         flask.session['logname'] = data['uniqname']

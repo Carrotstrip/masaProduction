@@ -53,11 +53,14 @@ case $1 in
 
   "dump")
     # dump everything in the database
-    sqlite3 var/masaProduction.sqlite3 "SELECT * FROM comments"
-    sqlite3 var/masaProduction.sqlite3 "SELECT * FROM following;"
-    sqlite3 var/masaProduction.sqlite3 "SELECT * FROM likes;"
-    sqlite3 var/masaProduction.sqlite3 "SELECT * FROM posts;"
-    sqlite3 var/masaProduction.sqlite3 "SELECT * FROM users;"
+    # sqlite3 var/masaProduction.sqlite3 < 
+    # .output sql/data.sql
+    # .dump
+    # .exit
+    sqlite3 var/masaProduction.sqlite3 "SELECT * FROM machinists;"
+    sqlite3 var/masaProduction.sqlite3 "SELECT * FROM parts;"
+    sqlite3 var/masaProduction.sqlite3 "SELECT * FROM ops;"
+    sqlite3 var/masaProduction.sqlite3 "SELECT * FROM inventory;"
     ;;
   *)
     usage

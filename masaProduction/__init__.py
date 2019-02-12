@@ -1,10 +1,22 @@
 """masaProduction package initializer."""
 
 import flask
-
+import os
+from flask_mail import Mail, Message
 # app is a single object used by all the code modules in this package
 app = flask.Flask(__name__)  # pylint: disable=invalid-name
 
+mail_settings = {
+    "MAIL_SERVER": 'smtp.gmail.com',
+    "MAIL_PORT": 465,
+    "MAIL_USE_TLS": False,
+    "MAIL_USE_SSL": True,
+    "MAIL_USERNAME": 'austinwolfy@gmail.com',
+    "MAIL_PASSWORD": 'jabujabu1'
+}
+
+app.config.update(mail_settings)
+mail = Mail(app)
 # Read settings from config module (masaProduction/config.py)
 app.config.from_object('masaProduction.config')
 
@@ -19,3 +31,4 @@ app.config.from_envvar('MASAPRODUCTION_SETTINGS', silent=True)
 # going to tell pylint and pycodestyle to ignore this coding style violation.
 import masaProduction.views  # noqa: E402  pylint: disable=wrong-import-position
 import masaProduction.model  # noqa: E402  pylint: disable=wrong-import-position
+import masaProduction.api  # noqa: E402  pylint: disable=wrong-import-position
