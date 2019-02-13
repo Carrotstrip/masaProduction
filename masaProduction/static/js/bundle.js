@@ -16324,6 +16324,7 @@ var Profile = function (_React$Component) {
       available: '',
       filename: ''
     };
+    _this.handleDelete = _this.handleDelete.bind(_this);
     return _this;
   }
 
@@ -16350,6 +16351,16 @@ var Profile = function (_React$Component) {
           img_url: data.img_url
         });
       }).catch(function (error) {
+        return console.log(error);
+      }); // eslint-disable-line no-console
+    }
+  }, {
+    key: 'handleDelete',
+    value: function handleDelete() {
+      var deleteUrl = '/api/v1.0/u/' + this.props.match.params.uniqname + '/delete/';
+      // console.log(this.props.match.params.uniqname);
+      // Call REST API to get user info
+      fetch(deleteUrl, { method: 'POST', credentials: 'same-origin' }).catch(function (error) {
         return console.log(error);
       }); // eslint-disable-line no-console
     }
@@ -16441,6 +16452,11 @@ var Profile = function (_React$Component) {
               this.state.available
             )
           )
+        ),
+        _react2.default.createElement(
+          'form',
+          { action: '', method: 'post', onSubmit: this.handleDelete },
+          _react2.default.createElement('input', { type: 'submit', name: 'delete', value: 'delete account' })
         )
       );
     }

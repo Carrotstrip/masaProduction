@@ -26,6 +26,7 @@ class Profile extends React.Component {
       available: '',
       filename: ''
     };
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
@@ -49,6 +50,14 @@ class Profile extends React.Component {
           img_url: data.img_url
         });
       })
+      .catch(error => console.log(error));// eslint-disable-line no-console
+  }
+
+  handleDelete() {
+    var deleteUrl = '/api/v1.0/u/' + this.props.match.params.uniqname + '/delete/'
+    // console.log(this.props.match.params.uniqname);
+    // Call REST API to get user info
+    fetch(deleteUrl, { method: 'POST', credentials: 'same-origin' })
       .catch(error => console.log(error));// eslint-disable-line no-console
   }
 
@@ -83,6 +92,9 @@ class Profile extends React.Component {
             <td>{this.state.available}</td>
           </tr> 
         </table>
+        <form action="" method="post" onSubmit={this.handleDelete} >
+          <input type="submit" name="delete" value="delete account"/>
+        </form>
       </div>
     );
   }

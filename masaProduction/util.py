@@ -97,35 +97,7 @@ def hashFile(request, filename):
     return hash_filename_basename
 
 
-def followButton(session, request_form, cursor):
-    """."""
-    data = {}
-    data['logname'] = session['username']
-    data['username'] = request_form['username']
-    if 'follow' in request_form:
-        cursor.execute("INSERT INTO following \
-        (username1, username2) VALUES (:logname, :username)", data)
-    elif 'unfollow' in request_form:
-        cursor.execute("DELETE FROM \
-        following WHERE username1 = :logname \
-        AND username2 = :username", data)
-
-
 def getCursor():
     """."""
     d_b = masaProduction.model.getDb()
     return d_b.cursor()
-
-
-def setLognameFollows(cursor, session, username, follow, data):
-    """."""
-    followers = []
-    for item in cursor.execute("SELECT username1 FROM \
-    following WHERE username2 = :username", data).fetchall():
-        followers.append(item['username1'])
-    if session['username'] in followers:
-        follow['logname_follows_username'] = True
-    elif session['username'] not in followers:
-        follow['logname_follows_username'] = False
-    elif session['username'] == username:
-        follow['logname_follows_username'] = False
