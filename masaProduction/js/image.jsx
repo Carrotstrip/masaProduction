@@ -16,9 +16,7 @@ class Image extends React.Component {
     // Render number of likes
     return (
       <div className="image">
-        <p>
-          <img src={this.props.url} alt="user profile pic" id='responsive-image' />
-        </p>
+        <img src={this.props.url} alt="user profile pic" id='responsive-image' />
       </div>
     );
   }

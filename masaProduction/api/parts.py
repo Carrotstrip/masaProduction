@@ -1,7 +1,7 @@
 """REST API for parts."""
 import flask
 import masaProduction
-from masaProduction.util import getCursor, hashFile
+from masaProduction.util import getCursor, hashFile, isAdmin
 
 
 @masaProduction.app.route('/api/v1.0/parts/<int:id>/', methods=["GET"])
@@ -55,13 +55,37 @@ def requestPart():
     machinist = 'unassigned'
     designCheck = 'no'
     productionCheck = 'no'
-    print('f')
     cur.execute(
         "INSERT INTO parts "
         "   (name, number, deadline, designer, machinist, drawing, designCheck, productionCheck)"
         "   VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
         (name, number, deadline, designer, machinist, drawing, designCheck, productionCheck)
     )
+    resp = flask.jsonify(**context)
+    resp.status_code = 201
+    return resp
+
+
+@masaProduction.app.route('/api/v1.0/parts/<int:id>/delete/', methods=["POST"])
+def deletePart(id):
+    """Docstring."""
+    context = {}
+    cur = getCursor()
+    print('deleting')
+    context = cur.execute(
+        "SELECT designer FROM parts "
+        "  WHERE id = ?",
+        (id,)
+        ).fetchone()
+    designer = context['designer']
+    logname = flask.session['logname']
+    print(designer)
+    print(logname)
+    if isAdmin(logname) or logname == designer:
+        cur.execute(
+            "DELETE FROM parts WHERE id = ?", (id,)).fetchone()
+    else:
+        flask.flash('you do not have permission to delete this part')
     resp = flask.jsonify(**context)
     resp.status_code = 201
     return resp

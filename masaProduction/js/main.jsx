@@ -12,16 +12,16 @@ import ReaderPage from './readerPage'
 
 ReactDOM.render(
     <Router history={browserHistory} >
-        <div>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/u/:uniqname/' component={Profile} />
-          <Route exact path='/parts/' component={Parts} />
-          <Route path='/parts/:partId/' component={PartPage} />
-          <Route exact path='/readers/' component={Readers} />
-          <Route exact path='/readers/:partId' component={ReaderPage} />
-          <Route path='/request/' component={Request} />
-          <Route exact path='/u/:uniqname/edit/' component={Edit} />
-        </div>
+      <div>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/u/:uniqname/' component={Profile} />
+        <Route exact path='/parts/' component={Parts} />
+        <Route path='/parts/:partId/' component={PartPage} />
+        <Route exact path='/readers/' component={Readers} />
+        <Route exact path='/readers/:partId/' component={ReaderPage} />
+        <Route path='/request/' component={Request} />
+        <Route exact path='/u/:uniqname/edit/' component={Edit} />
+      </div>
     </Router>,
   document.getElementById('reactEntry'),
 );

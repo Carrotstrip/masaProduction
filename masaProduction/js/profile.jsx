@@ -58,6 +58,7 @@ class Profile extends React.Component {
     // console.log(this.props.match.params.uniqname);
     // Call REST API to get user info
     fetch(deleteUrl, { method: 'POST', credentials: 'same-origin' })
+      .then(this.props.history.push('/'))
       .catch(error => console.log(error));// eslint-disable-line no-console
   }
 

@@ -28,7 +28,7 @@ class Part extends React.Component {
 
 
   componentDidMount() {
-    var partUrl = '/api/v1.0/parts/' + this.props.id
+    var partUrl = '/api/v1.0/parts/' + this.props.id + '/'
     // Call REST API to get part info
     fetch(partUrl, { credentials: 'same-origin' })
       .then((response) => {
@@ -67,12 +67,12 @@ class Part extends React.Component {
           {/* {`/uploads/${this.state.cadModel}`} */}
           {/* <OBJModel src={`/uploads/${this.state.cadModel}`} texPath="" width={200} height={200} /> */}
           {/* <OBJModel src="/uploads/cube.obj" texPath="" width={200} height={200} /> */}
-          <Image url={`/uploads/${this.state.drawing}`} />
+          <Image url={`/uploads/${this.state.drawing}/`} />
           <ul>
             <li>Lead Machinist: {this.state.machinist}</li>
             <li>Lead Designer: {this.state.designer}</li>
             <li>Deadline: {this.state.deadline}</li>
-            <li><Link to={`/parts/${this.props.id}`}>more detail</Link></li>
+            <li><Link to={`/parts/${this.props.id}/`}>more detail</Link></li>
           </ul>
         </p>
       </span>

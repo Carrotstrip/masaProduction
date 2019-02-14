@@ -414,11 +414,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(86)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(64)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(88)();
+  module.exports = __webpack_require__(66)();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -448,11 +448,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(64)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(86)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(66)();
+  module.exports = __webpack_require__(88)();
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
@@ -564,7 +564,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createPath = exports.parsePath = exports.locationsAreEqual = exports.createLocation = exports.createMemoryHistory = exports.createHashHistory = exports.createBrowserHistory = undefined;
 
-var _LocationUtils = __webpack_require__(11);
+var _LocationUtils = __webpack_require__(12);
 
 Object.defineProperty(exports, 'createLocation', {
   enumerable: true,
@@ -715,6 +715,91 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.withRouter = exports.matchPath = exports.generatePath = exports.Switch = exports.StaticRouter = exports.Router = exports.Route = exports.Redirect = exports.Prompt = exports.NavLink = exports.MemoryRouter = exports.Link = exports.HashRouter = exports.BrowserRouter = undefined;
+
+var _BrowserRouter2 = __webpack_require__(55);
+
+var _BrowserRouter3 = _interopRequireDefault(_BrowserRouter2);
+
+var _HashRouter2 = __webpack_require__(67);
+
+var _HashRouter3 = _interopRequireDefault(_HashRouter2);
+
+var _Link2 = __webpack_require__(33);
+
+var _Link3 = _interopRequireDefault(_Link2);
+
+var _MemoryRouter2 = __webpack_require__(68);
+
+var _MemoryRouter3 = _interopRequireDefault(_MemoryRouter2);
+
+var _NavLink2 = __webpack_require__(70);
+
+var _NavLink3 = _interopRequireDefault(_NavLink2);
+
+var _Prompt2 = __webpack_require__(72);
+
+var _Prompt3 = _interopRequireDefault(_Prompt2);
+
+var _Redirect2 = __webpack_require__(74);
+
+var _Redirect3 = _interopRequireDefault(_Redirect2);
+
+var _Route2 = __webpack_require__(34);
+
+var _Route3 = _interopRequireDefault(_Route2);
+
+var _Router2 = __webpack_require__(17);
+
+var _Router3 = _interopRequireDefault(_Router2);
+
+var _StaticRouter2 = __webpack_require__(76);
+
+var _StaticRouter3 = _interopRequireDefault(_StaticRouter2);
+
+var _Switch2 = __webpack_require__(78);
+
+var _Switch3 = _interopRequireDefault(_Switch2);
+
+var _generatePath2 = __webpack_require__(80);
+
+var _generatePath3 = _interopRequireDefault(_generatePath2);
+
+var _matchPath2 = __webpack_require__(81);
+
+var _matchPath3 = _interopRequireDefault(_matchPath2);
+
+var _withRouter2 = __webpack_require__(82);
+
+var _withRouter3 = _interopRequireDefault(_withRouter2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.BrowserRouter = _BrowserRouter3.default;
+exports.HashRouter = _HashRouter3.default;
+exports.Link = _Link3.default;
+exports.MemoryRouter = _MemoryRouter3.default;
+exports.NavLink = _NavLink3.default;
+exports.Prompt = _Prompt3.default;
+exports.Redirect = _Redirect3.default;
+exports.Route = _Route3.default;
+exports.Router = _Router3.default;
+exports.StaticRouter = _StaticRouter3.default;
+exports.Switch = _Switch3.default;
+exports.generatePath = _generatePath3.default;
+exports.matchPath = _matchPath3.default;
+exports.withRouter = _withRouter3.default;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -745,7 +830,7 @@ if (process.env.NODE_ENV !== 'production') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -839,7 +924,7 @@ var locationsAreEqual = exports.locationsAreEqual = function locationsAreEqual(a
 };
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -899,7 +984,7 @@ module.exports = warning;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -915,7 +1000,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(4);
+var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -952,11 +1037,7 @@ var Image = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'image' },
-        _react2.default.createElement(
-          'p',
-          null,
-          _react2.default.createElement('img', { src: this.props.url, alt: 'user profile pic', id: 'responsive-image' })
-        )
+        _react2.default.createElement('img', { src: this.props.url, alt: 'user profile pic', id: 'responsive-image' })
       );
     }
   }]);
@@ -969,91 +1050,6 @@ Image.propTypes = {
 };
 
 exports.default = Image;
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.withRouter = exports.matchPath = exports.generatePath = exports.Switch = exports.StaticRouter = exports.Router = exports.Route = exports.Redirect = exports.Prompt = exports.NavLink = exports.MemoryRouter = exports.Link = exports.HashRouter = exports.BrowserRouter = undefined;
-
-var _BrowserRouter2 = __webpack_require__(55);
-
-var _BrowserRouter3 = _interopRequireDefault(_BrowserRouter2);
-
-var _HashRouter2 = __webpack_require__(67);
-
-var _HashRouter3 = _interopRequireDefault(_HashRouter2);
-
-var _Link2 = __webpack_require__(33);
-
-var _Link3 = _interopRequireDefault(_Link2);
-
-var _MemoryRouter2 = __webpack_require__(68);
-
-var _MemoryRouter3 = _interopRequireDefault(_MemoryRouter2);
-
-var _NavLink2 = __webpack_require__(70);
-
-var _NavLink3 = _interopRequireDefault(_NavLink2);
-
-var _Prompt2 = __webpack_require__(72);
-
-var _Prompt3 = _interopRequireDefault(_Prompt2);
-
-var _Redirect2 = __webpack_require__(74);
-
-var _Redirect3 = _interopRequireDefault(_Redirect2);
-
-var _Route2 = __webpack_require__(34);
-
-var _Route3 = _interopRequireDefault(_Route2);
-
-var _Router2 = __webpack_require__(17);
-
-var _Router3 = _interopRequireDefault(_Router2);
-
-var _StaticRouter2 = __webpack_require__(76);
-
-var _StaticRouter3 = _interopRequireDefault(_StaticRouter2);
-
-var _Switch2 = __webpack_require__(78);
-
-var _Switch3 = _interopRequireDefault(_Switch2);
-
-var _generatePath2 = __webpack_require__(80);
-
-var _generatePath3 = _interopRequireDefault(_generatePath2);
-
-var _matchPath2 = __webpack_require__(81);
-
-var _matchPath3 = _interopRequireDefault(_matchPath2);
-
-var _withRouter2 = __webpack_require__(82);
-
-var _withRouter3 = _interopRequireDefault(_withRouter2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.BrowserRouter = _BrowserRouter3.default;
-exports.HashRouter = _HashRouter3.default;
-exports.Link = _Link3.default;
-exports.MemoryRouter = _MemoryRouter3.default;
-exports.NavLink = _NavLink3.default;
-exports.Prompt = _Prompt3.default;
-exports.Redirect = _Redirect3.default;
-exports.Route = _Route3.default;
-exports.Router = _Router3.default;
-exports.StaticRouter = _StaticRouter3.default;
-exports.Switch = _Switch3.default;
-exports.generatePath = _generatePath3.default;
-exports.matchPath = _matchPath3.default;
-exports.withRouter = _withRouter3.default;
 
 /***/ }),
 /* 15 */
@@ -1084,7 +1080,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _warning = __webpack_require__(12);
+var _warning = __webpack_require__(13);
 
 var _warning2 = _interopRequireDefault(_warning);
 
@@ -1210,7 +1206,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(4);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -1936,7 +1932,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(10);
+var _propTypes = __webpack_require__(11);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -2114,7 +2110,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(4);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -2782,13 +2778,13 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(4);
+var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRouterDom = __webpack_require__(14);
+var _reactRouterDom = __webpack_require__(10);
 
-var _image = __webpack_require__(13);
+var _image = __webpack_require__(14);
 
 var _image2 = _interopRequireDefault(_image);
 
@@ -2836,7 +2832,7 @@ var Part = function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var partUrl = '/api/v1.0/parts/' + this.props.id;
+      var partUrl = '/api/v1.0/parts/' + this.props.id + '/';
       // Call REST API to get part info
       fetch(partUrl, { credentials: 'same-origin' }).then(function (response) {
         if (!response.ok) throw Error(response.statusText);
@@ -2875,7 +2871,7 @@ var Part = function (_React$Component) {
         _react2.default.createElement(
           'p',
           null,
-          _react2.default.createElement(_image2.default, { url: '/uploads/' + this.state.drawing }),
+          _react2.default.createElement(_image2.default, { url: '/uploads/' + this.state.drawing + '/' }),
           _react2.default.createElement(
             'ul',
             null,
@@ -2902,7 +2898,7 @@ var Part = function (_React$Component) {
               null,
               _react2.default.createElement(
                 _reactRouterDom.Link,
-                { to: '/parts/' + this.props.id },
+                { to: '/parts/' + this.props.id + '/' },
                 'more detail'
               )
             )
@@ -2977,7 +2973,7 @@ var _reactDom = __webpack_require__(30);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(14);
+var _reactRouterDom = __webpack_require__(10);
 
 var _profile = __webpack_require__(85);
 
@@ -3024,7 +3020,7 @@ _reactDom2.default.render(_react2.default.createElement(
     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/parts/', component: _parts2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { path: '/parts/:partId/', component: _partPage2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/readers/', component: _readers2.default }),
-    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/readers/:partId', component: _readerPage2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/readers/:partId/', component: _readerPage2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { path: '/request/', component: _request2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/u/:uniqname/edit/', component: _edit2.default })
   )
@@ -12605,7 +12601,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(10);
+var _propTypes = __webpack_require__(11);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -13518,7 +13514,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _warning = __webpack_require__(12);
+var _warning = __webpack_require__(13);
 
 var _warning2 = _interopRequireDefault(_warning);
 
@@ -13526,7 +13522,7 @@ var _invariant = __webpack_require__(3);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _LocationUtils = __webpack_require__(11);
+var _LocationUtils = __webpack_require__(12);
 
 var _PathUtils = __webpack_require__(8);
 
@@ -13842,7 +13838,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _warning = __webpack_require__(12);
+var _warning = __webpack_require__(13);
 
 var _warning2 = _interopRequireDefault(_warning);
 
@@ -13850,7 +13846,7 @@ var _invariant = __webpack_require__(3);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _LocationUtils = __webpack_require__(11);
+var _LocationUtils = __webpack_require__(12);
 
 var _PathUtils = __webpack_require__(8);
 
@@ -14183,13 +14179,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _warning = __webpack_require__(12);
+var _warning = __webpack_require__(13);
 
 var _warning2 = _interopRequireDefault(_warning);
 
 var _PathUtils = __webpack_require__(8);
 
-var _LocationUtils = __webpack_require__(11);
+var _LocationUtils = __webpack_require__(12);
 
 var _createTransitionManager = __webpack_require__(16);
 
@@ -15075,7 +15071,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(10);
+var _propTypes = __webpack_require__(11);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -15184,7 +15180,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(4);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -15271,7 +15267,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(10);
+var _propTypes = __webpack_require__(11);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -15418,7 +15414,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(4);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -15551,7 +15547,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(4);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -15741,7 +15737,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(4);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -15956,7 +15952,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(4);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -16129,7 +16125,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(4);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -16281,7 +16277,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _image = __webpack_require__(13);
+var _image = __webpack_require__(14);
 
 var _image2 = _interopRequireDefault(_image);
 
@@ -16360,7 +16356,7 @@ var Profile = function (_React$Component) {
       var deleteUrl = '/api/v1.0/u/' + this.props.match.params.uniqname + '/delete/';
       // console.log(this.props.match.params.uniqname);
       // Call REST API to get user info
-      fetch(deleteUrl, { method: 'POST', credentials: 'same-origin' }).catch(function (error) {
+      fetch(deleteUrl, { method: 'POST', credentials: 'same-origin' }).then(this.props.history.push('/')).catch(function (error) {
         return console.log(error);
       }); // eslint-disable-line no-console
     }
@@ -17136,11 +17132,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(4);
+var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRouterDom = __webpack_require__(14);
+var _reactRouterDom = __webpack_require__(10);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17272,7 +17268,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(4);
+var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -17537,7 +17533,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(4);
+var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -29413,7 +29409,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(4);
+var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -29734,11 +29730,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(4);
+var _reactRouterDom = __webpack_require__(10);
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _reactRouterDom2 = _interopRequireDefault(_reactRouterDom);
 
-var _image = __webpack_require__(13);
+var _image = __webpack_require__(14);
 
 var _image2 = _interopRequireDefault(_image);
 
@@ -29781,10 +29777,12 @@ var PartPage = function (_React$Component) {
       designer: '',
       deadline: '',
       productionCheck: '',
-      designCheck: ''
+      designCheck: '',
+      partDeleted: false
     };
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.handleDelete = _this.handleDelete.bind(_this);
     return _this;
   }
 
@@ -29836,7 +29834,6 @@ var PartPage = function (_React$Component) {
         if (!response.ok) throw Error(response.statusText);
         return response.json();
       }).then(function (data) {
-        console.log(data);
         _this2.setState({
           machinist: data.machinist,
           designer: data.designer,
@@ -29851,121 +29848,137 @@ var PartPage = function (_React$Component) {
       }); // eslint-disable-line no-console
     }
   }, {
+    key: 'handleDelete',
+    value: function handleDelete(event) {
+      event.preventDefault();
+      var deleteUrl = '/api/v1.0/parts/' + this.props.match.params.partId + '/delete/';
+      // Call REST API to get user info
+      fetch(deleteUrl, { method: 'POST', credentials: 'same-origin' }).then(this.props.history.push('/parts/')).catch(function (error) {
+        return console.log(error);
+      }); // eslint-disable-line no-console
+    }
+  }, {
     key: 'render',
     value: function render() {
+      {
+        console.log(this.state.partDeleted);
+      }
+      // if (this.state.partDeleted === true) {
+      //   return <Redirect to='/parts/' />
+      // }
       return _react2.default.createElement(
         'div',
         { className: 'PartPage' },
         _react2.default.createElement(
-          'p',
-          null,
-          '/uploads/' + this.state.cadModel,
+          'table',
+          { id: 'userTable' },
           _react2.default.createElement(
-            'table',
-            { id: 'userTable' },
+            'tr',
+            null,
             _react2.default.createElement(
-              'tr',
+              'th',
               null,
-              _react2.default.createElement(
-                'th',
-                null,
-                'designer'
-              ),
-              _react2.default.createElement(
-                'th',
-                null,
-                'responsible machinist'
-              ),
-              _react2.default.createElement(
-                'th',
-                null,
-                'deadline'
-              ),
-              _react2.default.createElement(
-                'th',
-                null,
-                'production check'
-              ),
-              _react2.default.createElement(
-                'th',
-                null,
-                'design check'
-              )
+              'designer'
             ),
             _react2.default.createElement(
-              'tr',
+              'th',
               null,
-              _react2.default.createElement(
-                'td',
-                null,
-                this.state.designer
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                this.state.machinist
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                this.state.deadline
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                _react2.default.createElement(
-                  'select',
-                  { name: 'productionCheck', onChange: this.handleChange },
-                  _react2.default.createElement(
-                    'option',
-                    { hidden: true, value: 'default' },
-                    'select one'
-                  ),
-                  _react2.default.createElement(
-                    'option',
-                    { value: 'yes' },
-                    'yes'
-                  ),
-                  _react2.default.createElement(
-                    'option',
-                    { value: 'no' },
-                    'no'
-                  )
-                ),
-                this.state.productionCheck
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                _react2.default.createElement(
-                  'select',
-                  { name: 'designCheck', onChange: this.handleChange },
-                  _react2.default.createElement(
-                    'option',
-                    { hidden: true, value: 'default' },
-                    'select one'
-                  ),
-                  _react2.default.createElement(
-                    'option',
-                    { value: 'yes' },
-                    'yes'
-                  ),
-                  _react2.default.createElement(
-                    'option',
-                    { value: 'no' },
-                    'no'
-                  )
-                ),
-                this.state.designCheck
-              )
+              'responsible machinist'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              'deadline'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              'production check'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              'design check'
             )
           ),
           _react2.default.createElement(
-            'form',
-            { ref: this.myRef, action: '', method: 'post', onSubmit: this.handleSubmit, encType: 'multipart/form-data' },
-            _react2.default.createElement('input', { type: 'submit', name: 'update', value: 'submit' })
-          ),
-          _react2.default.createElement(_image2.default, { url: '/uploads/' + this.state.drawing })
+            'tr',
+            null,
+            _react2.default.createElement(
+              'td',
+              null,
+              this.state.designer
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              this.state.machinist
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              this.state.deadline
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement(
+                'select',
+                { name: 'productionCheck', onChange: this.handleChange },
+                _react2.default.createElement(
+                  'option',
+                  { hidden: true, value: 'default' },
+                  'select one'
+                ),
+                _react2.default.createElement(
+                  'option',
+                  { value: 'yes' },
+                  'yes'
+                ),
+                _react2.default.createElement(
+                  'option',
+                  { value: 'no' },
+                  'no'
+                )
+              ),
+              this.state.productionCheck
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement(
+                'select',
+                { name: 'designCheck', onChange: this.handleChange },
+                _react2.default.createElement(
+                  'option',
+                  { hidden: true, value: 'default' },
+                  'select one'
+                ),
+                _react2.default.createElement(
+                  'option',
+                  { value: 'yes' },
+                  'yes'
+                ),
+                _react2.default.createElement(
+                  'option',
+                  { value: 'no' },
+                  'no'
+                )
+              ),
+              this.state.designCheck
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'form',
+          { ref: this.myRef, action: '', method: 'post', onSubmit: this.handleSubmit, encType: 'multipart/form-data' },
+          _react2.default.createElement('input', { type: 'submit', name: 'update', value: 'update part' })
+        ),
+        _react2.default.createElement(_image2.default, { url: '/uploads/' + this.state.drawing + '/' }),
+        _react2.default.createElement(
+          'form',
+          { action: '', method: 'post', onSubmit: this.handleDelete },
+          _react2.default.createElement('input', { type: 'submit', name: 'delete', value: 'delete part' })
         )
       );
     }
@@ -30382,7 +30395,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(4);
+var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -30477,11 +30490,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(4);
+var _propTypes = __webpack_require__(5);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _image = __webpack_require__(13);
+var _image = __webpack_require__(14);
 
 var _image2 = _interopRequireDefault(_image);
 

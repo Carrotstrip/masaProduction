@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rm -rf var/masaProduction.sqlite3
+sqlite3 var/masaProduction.sqlite3 < var/dumpMasaProduction.sqlite3
