@@ -16,7 +16,7 @@ ReactDOM.render(
         <Route exact path='/' component={Home} />
         <Route exact path='/u/:uniqname/' component={Profile} />
         <Route exact path='/parts/' component={Parts} />
-        <Route path='/parts/:partId/' component={PartPage} />
+        <Route exact path='/parts/:partId/' component={PartPage} />
         <Route exact path='/readers/' component={Readers} />
         <Route exact path='/readers/:partId/' component={ReaderPage} />
         <Route path='/request/' component={Request} />

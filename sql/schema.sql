@@ -26,6 +26,7 @@ CREATE TABLE parts(
   designCheck VARCHAR(40),
   productionCheck VARCHAR(40),
 	status VARCHAR(40),
+	approved VARCHAR(40),
 	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY(id)
 );

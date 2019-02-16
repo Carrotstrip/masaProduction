@@ -22,7 +22,8 @@ class Part extends React.Component {
       drawing: '',
       machinist: '',
       designer: '',
-      deadline: ''
+      deadline: '',
+      link: ''
     };
   }
 
@@ -42,7 +43,8 @@ class Part extends React.Component {
           designer: data.designer,
           cadModel: data.cadModel,
           drawing: data.drawing,
-          deadline: data.deadline
+          deadline: data.deadline,
+          link: data.link
         });
       })
       .catch(error => console.log(error)); // eslint-disable-line no-console
@@ -72,7 +74,8 @@ class Part extends React.Component {
             <li>Lead Machinist: {this.state.machinist}</li>
             <li>Lead Designer: {this.state.designer}</li>
             <li>Deadline: {this.state.deadline}</li>
-            <li><Link to={`/parts/${this.props.id}/`}>more detail</Link></li>
+            
+            <li><Link to={`${this.state.link}${this.props.id}/`}>more detail</Link></li>
           </ul>
         </p>
       </span>

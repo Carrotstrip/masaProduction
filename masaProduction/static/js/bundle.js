@@ -427,40 +427,6 @@ if (process.env.NODE_ENV !== 'production') {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (process.env.NODE_ENV !== 'production') {
-  var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol.for && Symbol.for('react.element') || 0xeac7;
-
-  var isValidElement = function isValidElement(object) {
-    return (typeof object === 'undefined' ? 'undefined' : _typeof(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-  };
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(86)(isValidElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(88)();
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 /*
 object-assign
 (c) Sindre Sorhus
@@ -553,6 +519,40 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 };
 
 /***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol.for && Symbol.for('react.element') || 0xeac7;
+
+  var isValidElement = function isValidElement(object) {
+    return (typeof object === 'undefined' ? 'undefined' : _typeof(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(86)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(88)();
+}
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -579,7 +579,7 @@ Object.defineProperty(exports, 'locationsAreEqual', {
   }
 });
 
-var _PathUtils = __webpack_require__(8);
+var _PathUtils = __webpack_require__(9);
 
 Object.defineProperty(exports, 'parsePath', {
   enumerable: true,
@@ -614,104 +614,6 @@ exports.createMemoryHistory = _createMemoryHistory3.default;
 
 /***/ }),
 /* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var addLeadingSlash = exports.addLeadingSlash = function addLeadingSlash(path) {
-  return path.charAt(0) === '/' ? path : '/' + path;
-};
-
-var stripLeadingSlash = exports.stripLeadingSlash = function stripLeadingSlash(path) {
-  return path.charAt(0) === '/' ? path.substr(1) : path;
-};
-
-var hasBasename = exports.hasBasename = function hasBasename(path, prefix) {
-  return new RegExp('^' + prefix + '(\\/|\\?|#|$)', 'i').test(path);
-};
-
-var stripBasename = exports.stripBasename = function stripBasename(path, prefix) {
-  return hasBasename(path, prefix) ? path.substr(prefix.length) : path;
-};
-
-var stripTrailingSlash = exports.stripTrailingSlash = function stripTrailingSlash(path) {
-  return path.charAt(path.length - 1) === '/' ? path.slice(0, -1) : path;
-};
-
-var parsePath = exports.parsePath = function parsePath(path) {
-  var pathname = path || '/';
-  var search = '';
-  var hash = '';
-
-  var hashIndex = pathname.indexOf('#');
-  if (hashIndex !== -1) {
-    hash = pathname.substr(hashIndex);
-    pathname = pathname.substr(0, hashIndex);
-  }
-
-  var searchIndex = pathname.indexOf('?');
-  if (searchIndex !== -1) {
-    search = pathname.substr(searchIndex);
-    pathname = pathname.substr(0, searchIndex);
-  }
-
-  return {
-    pathname: pathname,
-    search: search === '?' ? '' : search,
-    hash: hash === '#' ? '' : hash
-  };
-};
-
-var createPath = exports.createPath = function createPath(location) {
-  var pathname = location.pathname,
-      search = location.search,
-      hash = location.hash;
-
-  var path = pathname || '/';
-
-  if (search && search !== '?') path += search.charAt(0) === '?' ? search : '?' + search;
-
-  if (hash && hash !== '#') path += hash.charAt(0) === '#' ? hash : '#' + hash;
-
-  return path;
-};
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var g;
-
-// This works in non-strict mode
-g = function () {
-	return this;
-}();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1, eval)("this");
-} catch (e) {
-	// This works if the window reference is available
-	if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-/***/ }),
-/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -796,6 +698,104 @@ exports.matchPath = _matchPath3.default;
 exports.withRouter = _withRouter3.default;
 
 /***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var addLeadingSlash = exports.addLeadingSlash = function addLeadingSlash(path) {
+  return path.charAt(0) === '/' ? path : '/' + path;
+};
+
+var stripLeadingSlash = exports.stripLeadingSlash = function stripLeadingSlash(path) {
+  return path.charAt(0) === '/' ? path.substr(1) : path;
+};
+
+var hasBasename = exports.hasBasename = function hasBasename(path, prefix) {
+  return new RegExp('^' + prefix + '(\\/|\\?|#|$)', 'i').test(path);
+};
+
+var stripBasename = exports.stripBasename = function stripBasename(path, prefix) {
+  return hasBasename(path, prefix) ? path.substr(prefix.length) : path;
+};
+
+var stripTrailingSlash = exports.stripTrailingSlash = function stripTrailingSlash(path) {
+  return path.charAt(path.length - 1) === '/' ? path.slice(0, -1) : path;
+};
+
+var parsePath = exports.parsePath = function parsePath(path) {
+  var pathname = path || '/';
+  var search = '';
+  var hash = '';
+
+  var hashIndex = pathname.indexOf('#');
+  if (hashIndex !== -1) {
+    hash = pathname.substr(hashIndex);
+    pathname = pathname.substr(0, hashIndex);
+  }
+
+  var searchIndex = pathname.indexOf('?');
+  if (searchIndex !== -1) {
+    search = pathname.substr(searchIndex);
+    pathname = pathname.substr(0, searchIndex);
+  }
+
+  return {
+    pathname: pathname,
+    search: search === '?' ? '' : search,
+    hash: hash === '#' ? '' : hash
+  };
+};
+
+var createPath = exports.createPath = function createPath(location) {
+  var pathname = location.pathname,
+      search = location.search,
+      hash = location.hash;
+
+  var path = pathname || '/';
+
+  if (search && search !== '?') path += search.charAt(0) === '?' ? search : '?' + search;
+
+  if (hash && hash !== '#') path += hash.charAt(0) === '#' ? hash : '#' + hash;
+
+  return path;
+};
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var g;
+
+// This works in non-strict mode
+g = function () {
+	return this;
+}();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1, eval)("this");
+} catch (e) {
+	// This works if the window reference is available
+	if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+/***/ }),
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -849,7 +849,7 @@ var _valueEqual = __webpack_require__(60);
 
 var _valueEqual2 = _interopRequireDefault(_valueEqual);
 
-var _PathUtils = __webpack_require__(8);
+var _PathUtils = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1000,7 +1000,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(6);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -2778,11 +2778,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(6);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(8);
 
 var _image = __webpack_require__(14);
 
@@ -2822,7 +2822,8 @@ var Part = function (_React$Component) {
       drawing: '',
       machinist: '',
       designer: '',
-      deadline: ''
+      deadline: '',
+      link: ''
     };
     return _this;
   }
@@ -2844,7 +2845,8 @@ var Part = function (_React$Component) {
           designer: data.designer,
           cadModel: data.cadModel,
           drawing: data.drawing,
-          deadline: data.deadline
+          deadline: data.deadline,
+          link: data.link
         });
       }).catch(function (error) {
         return console.log(error);
@@ -2898,7 +2900,7 @@ var Part = function (_React$Component) {
               null,
               _react2.default.createElement(
                 _reactRouterDom.Link,
-                { to: '/parts/' + this.props.id + '/' },
+                { to: '' + this.state.link + this.props.id + '/' },
                 'more detail'
               )
             )
@@ -2973,7 +2975,7 @@ var _reactDom = __webpack_require__(30);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(8);
 
 var _profile = __webpack_require__(85);
 
@@ -3018,7 +3020,7 @@ _reactDom2.default.render(_react2.default.createElement(
     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _home2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/u/:uniqname/', component: _profile2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/parts/', component: _parts2.default }),
-    _react2.default.createElement(_reactRouterDom.Route, { path: '/parts/:partId/', component: _partPage2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/parts/:partId/', component: _partPage2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/readers/', component: _readers2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/readers/:partId/', component: _readerPage2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { path: '/request/', component: _request2.default }),
@@ -3044,7 +3046,7 @@ _reactDom2.default.render(_react2.default.createElement(
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var k = __webpack_require__(6),
+var k = __webpack_require__(5),
     n = "function" === typeof Symbol && Symbol.for,
     p = n ? Symbol.for("react.element") : 60103,
     q = n ? Symbol.for("react.portal") : 60106,
@@ -3212,7 +3214,7 @@ if (process.env.NODE_ENV !== "production") {
   (function () {
     'use strict';
 
-    var _assign = __webpack_require__(6);
+    var _assign = __webpack_require__(5);
     var checkPropTypes = __webpack_require__(44);
 
     // TODO: this is special because it gets imported during build.
@@ -5202,7 +5204,7 @@ module.exports = ReactPropTypesSecret;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var aa = __webpack_require__(0),
-    n = __webpack_require__(6),
+    n = __webpack_require__(5),
     ba = __webpack_require__(31);function ca(a, b, c, d, e, f, g, h) {
   if (!a) {
     a = void 0;if (void 0 === b) a = Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else {
@@ -7512,7 +7514,7 @@ exports.unstable_shouldYield = function () {
 };exports.unstable_pauseExecution = function () {};exports.unstable_getFirstCallbackNode = function () {
   return c;
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 48 */
@@ -8222,7 +8224,7 @@ if (process.env.NODE_ENV !== "production") {
     exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
   })();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(10)))
 
 /***/ }),
 /* 49 */
@@ -8236,7 +8238,7 @@ if (process.env.NODE_ENV !== "production") {
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(0);var _assign=__webpack_require__(6);var checkPropTypes=__webpack_require__(50);var scheduler=__webpack_require__(31);var tracing=__webpack_require__(52);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(0);var _assign=__webpack_require__(5);var checkPropTypes=__webpack_require__(50);var scheduler=__webpack_require__(31);var tracing=__webpack_require__(52);/**
  * Use invariant() to assert state which your program assumes to be true.
  *
  * Provide sprintf-style format (only %s is supported) and arguments
@@ -12687,7 +12689,7 @@ exports.default = BrowserRouter;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var assign = __webpack_require__(6);
+var assign = __webpack_require__(5);
 
 var ReactPropTypesSecret = __webpack_require__(15);
 var checkPropTypes = __webpack_require__(57);
@@ -13524,7 +13526,7 @@ var _invariant2 = _interopRequireDefault(_invariant);
 
 var _LocationUtils = __webpack_require__(12);
 
-var _PathUtils = __webpack_require__(8);
+var _PathUtils = __webpack_require__(9);
 
 var _createTransitionManager = __webpack_require__(16);
 
@@ -13848,7 +13850,7 @@ var _invariant2 = _interopRequireDefault(_invariant);
 
 var _LocationUtils = __webpack_require__(12);
 
-var _PathUtils = __webpack_require__(8);
+var _PathUtils = __webpack_require__(9);
 
 var _createTransitionManager = __webpack_require__(16);
 
@@ -14183,7 +14185,7 @@ var _warning = __webpack_require__(13);
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _PathUtils = __webpack_require__(8);
+var _PathUtils = __webpack_require__(9);
 
 var _LocationUtils = __webpack_require__(12);
 
@@ -14373,7 +14375,7 @@ exports.default = createMemoryHistory;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var assign = __webpack_require__(6);
+var assign = __webpack_require__(5);
 
 var ReactPropTypesSecret = __webpack_require__(19);
 var checkPropTypes = __webpack_require__(65);
@@ -16482,7 +16484,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var emptyFunction = __webpack_require__(21);
 var invariant = __webpack_require__(22);
 var warning = __webpack_require__(23);
-var assign = __webpack_require__(6);
+var assign = __webpack_require__(5);
 
 var ReactPropTypesSecret = __webpack_require__(24);
 var checkPropTypes = __webpack_require__(87);
@@ -17132,11 +17134,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(6);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(8);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17268,7 +17270,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(6);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -17533,7 +17535,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(6);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -29368,7 +29370,7 @@ Popper.Defaults = Defaults;
 
 exports.default = Popper;
 //# sourceMappingURL=popper.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 99 */
@@ -29409,7 +29411,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(6);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -29624,7 +29626,7 @@ var key = '__global_unique_id__';
 module.exports = function () {
   return global[key] = (global[key] || 0) + 1;
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
 /* 102 */
@@ -29730,7 +29732,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(8);
 
 var _reactRouterDom2 = _interopRequireDefault(_reactRouterDom);
 
@@ -29748,6 +29750,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// import { Document, Page } from 'react-pdf';
 // import {OBJModel} from 'react-3d-viewer'
 
 var PartPage = function (_React$Component) {
@@ -29783,6 +29786,7 @@ var PartPage = function (_React$Component) {
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
     _this.handleDelete = _this.handleDelete.bind(_this);
+    _this.handleClaim = _this.handleClaim.bind(_this);
     return _this;
   }
 
@@ -29794,32 +29798,17 @@ var PartPage = function (_React$Component) {
   }, {
     key: 'handleSubmit',
     value: function handleSubmit(event) {
-      event.preventDefault();
-      var editUrl = '/api/v1.0/request/';
-      // var editUrl = '/api/v1.0' + this.props.match.url + '/' 
+      var updateUrl = '/api/v1.0/parts/' + this.props.match.params.partId + '/update/';
       var data = new FormData();
-      data.append('title', 'mydata');
-      data.append('fullName', this.state.fullName);
-      data.append('uniqname', this.state.uniqname);
-      data.append('password', this.state.password);
-      if (this.profilePic.files[0]) {
-        data.append('profilePic', this.profilePic.files[0]);
-      }
-      data.append('millStatus', this.state.millStatus);
-      data.append('latheStatus', this.state.latheStatus);
-      data.append('cncMillStatus', this.state.cncMillStatus);
-      data.append('cncLatheStatus', this.state.cncLatheStatus);
-      data.append('haasStatus', this.state.haasStatus);
-      data.append('available', this.state.available);
-      console.log(data);
-      console.log(editUrl);
-      fetch(editUrl, {
+      data.append('productionCheck', this.state.productionCheck);
+      data.append('designCheck', this.state.designCheck);
+      fetch(updateUrl, {
         method: 'POST',
         body: data
       }).then(function (response) {
         if (!response.ok) throw Error(response.statusText);
         return response.json();
-      }).catch(function (error) {
+      }).then(this.props.history.push('/parts/')).catch(function (error) {
         return console.log(error);
       }); // eslint-disable-line no-console
     }
@@ -29858,14 +29847,17 @@ var PartPage = function (_React$Component) {
       }); // eslint-disable-line no-console
     }
   }, {
+    key: 'handleClaim',
+    value: function handleClaim(event) {
+      var claimUrl = '/api/v1.0/parts/' + this.props.match.params.partId + '/claim/';
+      // Call REST API to get user info
+      fetch(claimUrl, { method: 'POST', credentials: 'same-origin' }).then(this.props.history.push('/parts/')).catch(function (error) {
+        return console.log(error);
+      }); // eslint-disable-line no-console
+    }
+  }, {
     key: 'render',
     value: function render() {
-      {
-        console.log(this.state.partDeleted);
-      }
-      // if (this.state.partDeleted === true) {
-      //   return <Redirect to='/parts/' />
-      // }
       return _react2.default.createElement(
         'div',
         { className: 'PartPage' },
@@ -29974,11 +29966,20 @@ var PartPage = function (_React$Component) {
           { ref: this.myRef, action: '', method: 'post', onSubmit: this.handleSubmit, encType: 'multipart/form-data' },
           _react2.default.createElement('input', { type: 'submit', name: 'update', value: 'update part' })
         ),
-        _react2.default.createElement(_image2.default, { url: '/uploads/' + this.state.drawing + '/' }),
         _react2.default.createElement(
           'form',
           { action: '', method: 'post', onSubmit: this.handleDelete },
           _react2.default.createElement('input', { type: 'submit', name: 'delete', value: 'delete part' })
+        ),
+        _react2.default.createElement(
+          'a',
+          { href: '/uploads/' + this.state.drawing + '/', download: true },
+          'download drawing'
+        ),
+        _react2.default.createElement(
+          'form',
+          { action: '', method: 'post', onSubmit: this.handleClaim },
+          _react2.default.createElement('input', { type: 'submit', name: 'claim', value: 'claim part' })
         )
       );
     }
@@ -30395,7 +30396,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _propTypes = __webpack_require__(6);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -30437,14 +30438,13 @@ var Readers = function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var partsUrl = "/api/v1.0/parts/";
-      fetch(partsUrl, { credentials: 'same-origin' }).then(function (response) {
+      var readersUrl = "/api/v1.0/readers/";
+      fetch(readersUrl, { credentials: 'same-origin' }).then(function (response) {
         if (!response.ok) throw Error(response.statusText);
         return response.json();
       }).then(function (data) {
         _this2.setState({
           url: data.url,
-          next: data.next,
           results: data.results
         });
       }).catch(function (error) {
@@ -30490,9 +30490,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(5);
+var _reactRouterDom = __webpack_require__(8);
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _reactRouterDom2 = _interopRequireDefault(_reactRouterDom);
 
 var _image = __webpack_require__(14);
 
@@ -30508,10 +30508,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// import { Document, Page } from 'react-pdf';
 // import {OBJModel} from 'react-3d-viewer'
 
-var ReaderPage = function (_React$Component) {
-  _inherits(ReaderPage, _React$Component);
+var PartPage = function (_React$Component) {
+  _inherits(PartPage, _React$Component);
 
   /* 
   This is a thumbnail for a PartPage that has already been approved. It consists of:
@@ -30522,10 +30523,10 @@ var ReaderPage = function (_React$Component) {
   Deadline
   */
 
-  function ReaderPage(props) {
-    _classCallCheck(this, ReaderPage);
+  function PartPage(props) {
+    _classCallCheck(this, PartPage);
 
-    var _this = _possibleConstructorReturn(this, (ReaderPage.__proto__ || Object.getPrototypeOf(ReaderPage)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (PartPage.__proto__ || Object.getPrototypeOf(PartPage)).call(this, props));
     // Initialize mutable state
 
 
@@ -30537,14 +30538,16 @@ var ReaderPage = function (_React$Component) {
       designer: '',
       deadline: '',
       productionCheck: '',
-      designCheck: ''
+      designCheck: '',
+      partDeleted: false
     };
     _this.handleChange = _this.handleChange.bind(_this);
     _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.handleDelete = _this.handleDelete.bind(_this);
     return _this;
   }
 
-  _createClass(ReaderPage, [{
+  _createClass(PartPage, [{
     key: 'handleChange',
     value: function handleChange(event) {
       this.setState(_defineProperty({}, event.target.name, event.target.value));
@@ -30552,31 +30555,17 @@ var ReaderPage = function (_React$Component) {
   }, {
     key: 'handleSubmit',
     value: function handleSubmit(event) {
-      event.preventDefault();
-      var editUrl = '/api/v1.0/request/';
+      var updateUrl = '/api/v1.0/parts/' + this.props.match.params.partId + '/update/';
       var data = new FormData();
-      data.append('title', 'mydata');
-      data.append('fullName', this.state.fullName);
-      data.append('uniqname', this.state.uniqname);
-      data.append('password', this.state.password);
-      if (this.profilePic.files[0]) {
-        data.append('profilePic', this.profilePic.files[0]);
-      }
-      data.append('millStatus', this.state.millStatus);
-      data.append('latheStatus', this.state.latheStatus);
-      data.append('cncMillStatus', this.state.cncMillStatus);
-      data.append('cncLatheStatus', this.state.cncLatheStatus);
-      data.append('haasStatus', this.state.haasStatus);
-      data.append('available', this.state.available);
-      console.log(data);
-      console.log(editUrl);
-      fetch(editUrl, {
+      data.append('productionCheck', this.state.productionCheck);
+      data.append('designCheck', this.state.designCheck);
+      fetch(updateUrl, {
         method: 'POST',
         body: data
       }).then(function (response) {
         if (!response.ok) throw Error(response.statusText);
         return response.json();
-      }).catch(function (error) {
+      }).then(this.props.history.push('/readers/')).catch(function (error) {
         return console.log(error);
       }); // eslint-disable-line no-console
     }
@@ -30587,12 +30576,10 @@ var ReaderPage = function (_React$Component) {
 
       var partPageUrl = '/api/v1.0/parts/' + this.props.match.params.partId + '/';
       // Call REST API to get part info
-      console.log('/api/v1.0' + this.props.match.url);
       fetch(partPageUrl, { credentials: 'same-origin' }).then(function (response) {
         if (!response.ok) throw Error(response.statusText);
         return response.json();
       }).then(function (data) {
-        console.log(data);
         _this2.setState({
           machinist: data.machinist,
           designer: data.designer,
@@ -30607,130 +30594,143 @@ var ReaderPage = function (_React$Component) {
       }); // eslint-disable-line no-console
     }
   }, {
+    key: 'handleDelete',
+    value: function handleDelete(event) {
+      var deleteUrl = '/api/v1.0/parts/' + this.props.match.params.partId + '/delete/';
+      // Call REST API to get user info
+      fetch(deleteUrl, { method: 'POST', credentials: 'same-origin' }).then(this.props.history.push('/readers/')).catch(function (error) {
+        return console.log(error);
+      }); // eslint-disable-line no-console
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
         { className: 'PartPage' },
         _react2.default.createElement(
-          'p',
-          null,
+          'table',
+          { id: 'userTable' },
           _react2.default.createElement(
-            'table',
-            { id: 'userTable' },
+            'tr',
+            null,
             _react2.default.createElement(
-              'tr',
+              'th',
               null,
-              _react2.default.createElement(
-                'th',
-                null,
-                'designer'
-              ),
-              _react2.default.createElement(
-                'th',
-                null,
-                'responsible machinist'
-              ),
-              _react2.default.createElement(
-                'th',
-                null,
-                'deadline'
-              ),
-              _react2.default.createElement(
-                'th',
-                null,
-                'production check'
-              ),
-              _react2.default.createElement(
-                'th',
-                null,
-                'design check'
-              )
+              'designer'
             ),
             _react2.default.createElement(
-              'tr',
+              'th',
               null,
-              _react2.default.createElement(
-                'td',
-                null,
-                this.state.designer
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                this.state.machinist
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                this.state.deadline
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                _react2.default.createElement(
-                  'select',
-                  { name: 'productionCheck', onChange: this.handleChange },
-                  _react2.default.createElement(
-                    'option',
-                    { hidden: true, value: 'default' },
-                    'select one'
-                  ),
-                  _react2.default.createElement(
-                    'option',
-                    { value: 'yes' },
-                    'yes'
-                  ),
-                  _react2.default.createElement(
-                    'option',
-                    { value: 'no' },
-                    'no'
-                  )
-                ),
-                this.state.productionCheck
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                _react2.default.createElement(
-                  'select',
-                  { name: 'designCheck', onChange: this.handleChange },
-                  _react2.default.createElement(
-                    'option',
-                    { hidden: true, value: 'default' },
-                    'select one'
-                  ),
-                  _react2.default.createElement(
-                    'option',
-                    { value: 'yes' },
-                    'yes'
-                  ),
-                  _react2.default.createElement(
-                    'option',
-                    { value: 'no' },
-                    'no'
-                  )
-                ),
-                this.state.designCheck
-              )
+              'responsible machinist'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              'deadline'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              'production check'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              'design check'
             )
           ),
           _react2.default.createElement(
-            'form',
-            { ref: this.myRef, action: '', method: 'post', onSubmit: this.handleSubmit, encType: 'multipart/form-data' },
-            _react2.default.createElement('input', { type: 'submit', name: 'update', value: 'submit' })
-          ),
-          _react2.default.createElement(_image2.default, { url: '/uploads/' + this.state.drawing }),
-          _react2.default.createElement(Comments, { url: this.props.match.params.partId + 'comments/' })
+            'tr',
+            null,
+            _react2.default.createElement(
+              'td',
+              null,
+              this.state.designer
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              this.state.machinist
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              this.state.deadline
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement(
+                'select',
+                { name: 'productionCheck', onChange: this.handleChange },
+                _react2.default.createElement(
+                  'option',
+                  { hidden: true, value: 'default' },
+                  'select one'
+                ),
+                _react2.default.createElement(
+                  'option',
+                  { value: 'yes' },
+                  'yes'
+                ),
+                _react2.default.createElement(
+                  'option',
+                  { value: 'no' },
+                  'no'
+                )
+              ),
+              this.state.productionCheck
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement(
+                'select',
+                { name: 'designCheck', onChange: this.handleChange },
+                _react2.default.createElement(
+                  'option',
+                  { hidden: true, value: 'default' },
+                  'select one'
+                ),
+                _react2.default.createElement(
+                  'option',
+                  { value: 'yes' },
+                  'yes'
+                ),
+                _react2.default.createElement(
+                  'option',
+                  { value: 'no' },
+                  'no'
+                )
+              ),
+              this.state.designCheck
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'form',
+          { ref: this.myRef, action: '', onSubmit: this.handleSubmit, encType: 'multipart/form-data' },
+          _react2.default.createElement('input', { type: 'submit', name: 'update', value: 'update part' })
+        ),
+        _react2.default.createElement(
+          'form',
+          { action: '', onSubmit: this.handleDelete },
+          _react2.default.createElement('input', { type: 'submit', name: 'delete', value: 'delete part' })
+        ),
+        _react2.default.createElement(
+          'a',
+          { href: '/uploads/' + this.state.drawing + '/', download: true },
+          'download drawing'
         )
       );
     }
   }]);
 
-  return ReaderPage;
+  return PartPage;
 }(_react2.default.Component);
 
-exports.default = ReaderPage;
+exports.default = PartPage;
 
 /***/ })
 /******/ ]);

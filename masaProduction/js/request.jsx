@@ -83,7 +83,6 @@ class Request extends React.Component {
               placeholderText="Click to select a date"
               dateFormat="MM/dd/yyyy"
             /><br></br>
-            {/* <input name="deadline" type="text" value={this.state.deadline} onChange={this.handleChange} /> */}
             {/* <label>CAD model</label>
             <input ref={(ref) => { this.cadModel = ref; }} name="cadModel" type='file' /><br></br> */}
             <label>drawing (jpg please)</label>

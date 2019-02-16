@@ -1,6 +1,7 @@
 import React from 'react';
 import Redirect from 'react-router-dom';
 import Image from './image';
+// import { Document, Page } from 'react-pdf';
 // import {OBJModel} from 'react-3d-viewer'
 
 class PartPage extends React.Component {
@@ -30,6 +31,7 @@ class PartPage extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleClaim = this.handleClaim.bind(this);
   }
 
   handleChange(event) {
@@ -39,26 +41,11 @@ class PartPage extends React.Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault()
-    var editUrl = '/api/v1.0/request/'
-    // var editUrl = '/api/v1.0' + this.props.match.url + '/' 
+    var updateUrl = '/api/v1.0/parts/' + this.props.match.params.partId + '/update/'
     var data = new FormData();
-    data.append('title', 'mydata')
-    data.append('fullName', this.state.fullName);
-    data.append('uniqname', this.state.uniqname);
-    data.append('password', this.state.password);
-    if(this.profilePic.files[0]) {
-      data.append('profilePic', this.profilePic.files[0]);
-    }
-    data.append('millStatus', this.state.millStatus);
-    data.append('latheStatus', this.state.latheStatus);
-    data.append('cncMillStatus', this.state.cncMillStatus);
-    data.append('cncLatheStatus', this.state.cncLatheStatus);
-    data.append('haasStatus', this.state.haasStatus);
-    data.append('available', this.state.available);
-    console.log(data)
-    console.log(editUrl)
-    fetch(editUrl,
+    data.append('productionCheck', this.state.productionCheck);
+    data.append('designCheck', this.state.designCheck);
+    fetch(updateUrl,
       {
         method: 'POST',
         body: data
@@ -68,6 +55,7 @@ class PartPage extends React.Component {
         if (!response.ok) throw Error(response.statusText);
         return response.json();
       })
+      .then(this.props.history.push('/parts/'))
       .catch(error => console.log(error)); // eslint-disable-line no-console
   }
 
@@ -102,15 +90,17 @@ class PartPage extends React.Component {
       .catch(error => console.log(error));// eslint-disable-line no-console
   }
 
+  handleClaim(event) {
+    var claimUrl = '/api/v1.0/parts/' + this.props.match.params.partId + '/claim/'
+    // Call REST API to get user info
+    fetch(claimUrl, { method: 'POST', credentials: 'same-origin' })
+      .then(this.props.history.push('/parts/'))
+      .catch(error => console.log(error));// eslint-disable-line no-console
+  }
+
   render() {
-    {console.log(this.state.partDeleted)}
-    // if (this.state.partDeleted === true) {
-    //   return <Redirect to='/parts/' />
-    // }
     return (
       <div className="PartPage">
-        {/* {`/uploads/${this.state.cadModel}`} */}
-        {/* <OBJModel src={'/uploads/' + this.state.cadModel} texPath="" /> */}
         <table id="userTable">
         <tr>
           <th>designer</th>
@@ -145,15 +135,19 @@ class PartPage extends React.Component {
       <form ref={this.myRef} action="" method="post" onSubmit={this.handleSubmit} encType="multipart/form-data">
         <input type="submit" name="update" value="update part"/>
       </form>
-
+      <form action="" method="post" onSubmit={this.handleDelete} >
+          <input type="submit" name="delete" value="delete part"/>
+      </form>
         {/* <OBJModel src={`${this.state.cadModel}`} texPath="/uploads/" /> */}
         {/* <OBJModel src={`cube.obj`} texPath="/uploads/" /> */}
-        <Image url={`/uploads/${this.state.drawing}/`} />
-
-        <form action="" method="post" onSubmit={this.handleDelete} >
-          <input type="submit" name="delete" value="delete part"/>
+        {/* <Image url={`/uploads/${this.state.drawing}/`} /> */}
+        {/* <Document file={`/uploads/${this.state.drawing}/`} >
+          <Page pageNumber={1} />
+        </Document> */}
+        <a href={`/uploads/${this.state.drawing}/`} download>download drawing</a>
+        <form action="" method="post" onSubmit={this.handleClaim} >
+          <input type="submit" name="claim" value="claim part"/>
         </form>
-        
       </div>
     );
   }

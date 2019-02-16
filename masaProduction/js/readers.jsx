@@ -18,8 +18,8 @@ class Readers extends React.Component {
   }
 
   componentDidMount() {
-    var partsUrl = "/api/v1.0/parts/"
-    fetch(partsUrl, { credentials: 'same-origin' })
+    var readersUrl = "/api/v1.0/readers/"
+    fetch(readersUrl, { credentials: 'same-origin' })
       .then((response) => {
         if (!response.ok) throw Error(response.statusText);
         return response.json();
@@ -27,7 +27,6 @@ class Readers extends React.Component {
       .then((data) => {
         this.setState({
           url: data.url,
-          next: data.next,
           results: data.results
         });
       })
